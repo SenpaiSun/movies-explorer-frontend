@@ -1,0 +1,14 @@
+.title__text {
+  color: #FFF;
+  font-size: 22px;
+  line-height: 1.2;
+  font-weight: 300;
+  border-bottom: solid #FFF 1px;
+  margin: 110px 70px 0 70px;
+  padding-bottom: 25px;
+  letter-spacing: -0.8px;
+}
+
+.title__text-techs {
+  margin-top: 100px;
+}

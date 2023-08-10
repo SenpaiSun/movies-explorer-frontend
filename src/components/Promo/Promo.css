@@ -1,0 +1,32 @@
+.promo {
+  background-color: #073042;
+  margin: 0;
+  padding: 0;
+  height: 560px;
+  position: relative;
+}
+
+.promo__text {
+  margin: 0;
+  padding: 0;
+  color: #FFF;
+  font-size: 40px;
+  line-height: 1.32;
+  font-weight: 300;
+  position: absolute;
+  max-width: 626px;
+  max-height: 104px;
+  left: 70px;
+  top: 50px;
+  letter-spacing: -1.6px;
+}
+
+.promo__logo {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  max-width: 722px;
+  max-height: 244px;
+  right: 70px;
+  bottom: 60px
+}
