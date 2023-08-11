@@ -1,9 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import Main from '../Main/Main';
 import Header from '../Header/Header';
-import Promo from '../Promo/Promo';
-import AboutProject from '../AboutProject/AboutProject'
-import Techs from '../Techs/Techs';
+
 
 function App() {
   return (
@@ -11,10 +10,7 @@ function App() {
       <Routes>
         <Route path='/' element={
           <>
-            <Header/>
-            <Promo/>
-            <AboutProject/>
-            <Techs/>
+            <Main/>
           </>
         }/>
 
