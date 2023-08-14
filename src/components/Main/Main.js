@@ -6,10 +6,10 @@ import AboutMe from '../AboutMe/AboutMe';
 import Portfolio from '../Portfolio/Portfolio';
 import Footer from '../Footer/Footer'
 
-export default function Main() {
+export default function Main(props) {
   return (
     <>
-      <Header/>
+      <Header landing={props.landing}/>
       <Promo/>
       <AboutProject/>
       <Techs/>

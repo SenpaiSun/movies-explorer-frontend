@@ -1,0 +1,50 @@
+.toggle-shorts {
+  position: relative;
+  display: inline-block;
+  width: 36px;
+  height: 20px;
+  border-radius: 50px;
+}
+
+.toggle-shorts input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-shorts__slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50px;
+  background-color: #343434;
+}
+
+.toggle-shorts__slider::before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 2px;
+  bottom: 2px;
+  border-radius: 50px;
+  background-color: #A0A0A0;
+  transition: 0.4s;
+  border: 1px solid #fff;
+}
+
+input:checked + .toggle-shorts__slider {
+  background-color: #343434;
+}
+
+input:checked + .toggle-shorts__slider::before {
+  background-color: #2BE080;
+}
+
+input:checked + .toggle-shorts__slider::before {
+  transform: translate(16px);
+  border: 1px solid #fff;
+}
