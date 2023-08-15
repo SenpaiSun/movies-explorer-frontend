@@ -1,0 +1,35 @@
+.movies {
+
+}
+
+.movies__container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min-content, 269px));
+  margin: 70px 70px 0;
+  justify-content: center;
+  gap: 20px;
+}
+
+.movies__load {
+  height: 77px;
+  display: flex;
+  justify-content: center;
+  margin: 40px;
+}
+
+.movies__load_button {
+  width: 320px;
+  height: 36px;
+  background-color: #2F2F2F;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.movies__load_button:hover {
+  opacity: 0.8;
+}

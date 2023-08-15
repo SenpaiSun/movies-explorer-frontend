@@ -1,6 +1,7 @@
+import './SearchForm.css'
 import React from "react";
 import searchLogo from '../../images/icon.svg'
-import ToggleShorts from "../ToggleShorts/TiggleShorts";
+import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 
 export default function SearchForm() {
 
@@ -11,7 +12,7 @@ export default function SearchForm() {
         <input className="search-form__input" placeholder="Фильм"/>
         <button className="search-form__button-search" type="submit">Найти</button>
           <div className="search-form__button-short">
-            <ToggleShorts/>
+            <FilterCheckbox/>
           </div>
           <p className="search-form__shortfilms">Короткометражки</p>
       </div>

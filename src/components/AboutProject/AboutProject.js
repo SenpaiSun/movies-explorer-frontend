@@ -1,3 +1,4 @@
+import './AboutProject.css'
 import React from "react";
 import Title from "../Title/Title";
 import TimeLine from "../TimeLine/TimeLine";

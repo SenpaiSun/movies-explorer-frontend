@@ -89,6 +89,10 @@
   height: 100%;
 }
 
+.header__link-header:hover {
+  opacity: 0.8;
+}
+
 .header__link-header-saved {
   font-weight: 400;
   margin: 0 0 0 16px;

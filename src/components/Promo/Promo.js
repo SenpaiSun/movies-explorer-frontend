@@ -1,3 +1,4 @@
+import './Promo.css'
 import React from "react";
 import promoLogo from '../../images/text__COLOR_landing-logo.png'
 
