@@ -17,7 +17,7 @@ export default function MoviesCard(props) {
       </a>
       <div className="card__title">
         <h2 className="card__title_name">{cardData.nameRU}</h2>
-        <button className={!isLike ? 'card__title_like' : 'card__title_like card__title_like-active'} onClick={clickLike}/>
+        <button className={props.main ? (!isLike ? 'card__title_like' : 'card__title_like card__title_like-active') : 'card__title_like card__title_like-delete'} onClick={clickLike}/>
       </div>
       <p className="card__duration">{cardData.duration}</p>
     </li>

@@ -5,8 +5,8 @@
   margin: 0 0 18px;
 }
 
-.card__link {
-
+.card:hover .card__title_like-delete {
+  opacity: 1;
 }
 
 .card__image {
@@ -51,6 +51,11 @@
 
 .card__title_like-active {
   background-image: url(../../images/icon__like_active.png);
+}
+
+.card__title_like-delete  {
+  background-image: url(../../images/icon-color-icon-main.svg);
+  opacity: 0;
 }
 
 .card__title_like:hover {

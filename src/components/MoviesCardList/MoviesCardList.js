@@ -3,7 +3,7 @@ import React from 'react'
 import MoviesCard from '../MoviesCard/MoviesCard'
 import { cardData } from '../../utils/cardData'
 
-export default function MoviesCardList() {
+export default function MoviesCardList(props) {
   const [cardVisible, setCardVisible] = React.useState(16)
 
   const loadMore = () => {
@@ -16,7 +16,7 @@ export default function MoviesCardList() {
     <section className='movies'>
       <div className='movies__container'>
         {cardData.slice(0, cardVisible).map((el, index) => (
-          <MoviesCard key={index} card={el} />
+          <MoviesCard mainSaved={props.mainSaved} main={props.main} key={index} card={el} />
         ))}
       </div>
       <div className='movies__load'>

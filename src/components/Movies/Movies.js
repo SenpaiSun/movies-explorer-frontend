@@ -10,7 +10,7 @@ export default function Movies(props) {
     <>
       <Header main={props.main}/>
       <SearchForm/>
-      <MoviesCardList/>
+      <MoviesCardList main={props.main}/>
       <Footer/>
     </>
   )

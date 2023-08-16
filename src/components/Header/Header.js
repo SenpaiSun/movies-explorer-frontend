@@ -1,7 +1,7 @@
 import './Header.css'
 import React from 'react'
 import logo from '../../images/logo.png'
-import accountLogo from '../../images/icon-color-icon-main.svg'
+import accountLogo from '../../images/account.svg'
 import { Link } from 'react-router-dom'
 
 export default function Header(props) {
