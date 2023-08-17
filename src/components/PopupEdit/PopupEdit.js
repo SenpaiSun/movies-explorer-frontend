@@ -32,9 +32,12 @@ export default function PopupEdit() {
             <button className='popup-edit__button-exit'>Выйти из аккаунта</button>
           </div>
         ) : (
-          <button className='popup-edit__button-save' onClick={editButton}>
-            Сохранить
-          </button>
+          <>
+            <p className='popup-edit__button-error popup-edit__button-error-active'>При обновлении профиля произошла ошибка.</p>
+            <button className='popup-edit__button-save' onClick={editButton}>
+              Сохранить
+            </button>
+          </>
         )}
       </form>
     </main>

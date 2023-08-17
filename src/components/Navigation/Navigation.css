@@ -1,0 +1,54 @@
+.navigation {
+  height: 74px;
+  background-color: #202020;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 0 0 44px;
+  padding: 0;
+  align-items: center;
+  width: 100%;
+}
+
+.header__link-header {
+  text-decoration: none;
+  color: #FFF;
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 400;
+  text-align: center;
+  height: 100%;
+}
+
+.header__link-header-active {
+  font-weight: 500;
+}
+
+
+.header__link-header:hover {
+  opacity: 0.8;
+}
+
+.header__link-header-saved {
+  margin: 0 0 0 16px;
+}
+
+.header__container-account {
+  margin: 0 73px 0 0;
+  display: flex;
+  flex-direction: row;
+  gap: 7px;
+  justify-content: center;
+  align-items: center;
+}
+
+.header__container-account-logo {
+  background-color: #313131;
+  width: 26px;
+  height: 26px;
+  border-radius: 50px;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -37,6 +37,10 @@
   color: #fff;
 }
 
+.portfolio__list_item_link:hover {
+  opacity: 0.7;
+}
+
 .portfolio__list_item_link-arrow {
   position: relative;
   top: 4px;

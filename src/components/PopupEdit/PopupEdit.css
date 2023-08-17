@@ -81,6 +81,10 @@
   cursor: pointer;
 }
 
+.popup-edit__button-edit:hover {
+  opacity: 0.7;
+}
+
 .popup-edit__button-exit {
   color: #EE3465;
   font-size: 13px;
@@ -94,14 +98,35 @@
   cursor: pointer;
 }
 
+.popup-edit__button-exit:hover {
+  opacity: 0.7;
+}
+
 .popup-edit__button-save {
   width: 100%;
   padding: 0;
-  margin: 223px 0 0;
+  margin: 0;
   border: none;
   background-color: #3456F3;
   height: 45px;
   border-radius: 3px;
   color: #fff;
   cursor: pointer;
+}
+
+.popup-edit__button-save:hover {
+  opacity: 0.8;
+}
+
+.popup-edit__button-error {
+  margin: 189px 0 20px;
+  color: #FF004C;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: normal;
+  opacity: 1;
+}
+
+.popup-edit__button-error-active {
+  opacity: 0;
 }

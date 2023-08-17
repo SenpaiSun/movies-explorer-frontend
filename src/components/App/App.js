@@ -1,10 +1,12 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Main from '../Main/Main';
-import Header from '../Header/Header';
-import Movies from '../Movies/Movies'
-import SavedMovies from '../SavedMovies/SavedMovies'
-import Profile from '../Profile/Profile'
+import Movies from '../Movies/Movies';
+import SavedMovies from '../SavedMovies/SavedMovies';
+import Profile from '../Profile/Profile';
+import Register from '../Register/Register';
+import Login from '../Login/Login';
+import NotFound from '../NotFound/NotFound';
 
 
 function App() {
@@ -17,7 +19,7 @@ function App() {
           }/>
 
           <Route path='/movies' element={
-            <Movies main={true}/>
+            <Movies main={true} mainMovies={true}/>
           }/>
 
           <Route path='/saved-movies' element={
@@ -25,15 +27,19 @@ function App() {
           }/>
 
           <Route path='/profile' element={
-            <Profile main={true}/>
-          }/>
-
-          <Route path='/signin' element={
-          <Header/>
+            <Profile main={true} profile={true}/>
           }/>
 
           <Route path='/signup' element={
-          <Header/>
+            <Register toRegister={true} title='Добро пожаловать!' buttonText='Зарегистрироваться' textRedirect='Уже зарегистрированы?' textLink='Войти'/>
+          }/>
+
+          <Route path='/signin' element={
+            <Login title='Рады видеть!' buttonText='Войти' textRedirect='Ещё не зарегистрированы?' textLink='Регистрация'/>
+          }/>
+
+          <Route path='*' element={
+            <NotFound/>
           }/>
         </Routes>
     </div>

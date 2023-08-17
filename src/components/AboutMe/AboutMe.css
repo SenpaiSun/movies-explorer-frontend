@@ -58,3 +58,7 @@
   margin: auto 0 45px;
   text-decoration: none;
 }
+
+.about-me__info_github:hover {
+  opacity: 0.7;
+}
