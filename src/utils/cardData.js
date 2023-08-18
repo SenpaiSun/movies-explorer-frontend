@@ -1,6 +1,6 @@
 export const cardData = [
   {
-    _id: "64d3ebd253842d3ab048095b",
+    _id: "164d3ebd253842d3ab048095b",
     country: "USA",
     director: "NoName",
     duration: 134,
@@ -15,7 +15,7 @@ export const cardData = [
     nameEN:" Altyn1 йцуйцуйццуйцу",
   },
   {
-    _id: "64d3ebd253842d3ab048095b",
+    _id: "264d3ebd253842d3ab048095b",
     country: "USA",
     director: "NoName",
     duration: 134,
@@ -30,7 +30,7 @@ export const cardData = [
     nameEN:" Altyn2",
   },
   {
-    _id: "64d3ebd253842d3ab048095b",
+    _id: "364d3ebd253842d3ab048095b",
     country: "USA",
     director: "NoName",
     duration: 134,
@@ -45,7 +45,7 @@ export const cardData = [
     nameEN:" Altyn3",
   },
   {
-    _id: "64d3ebd253842d3ab048095b",
+    _id: "464d3ebd253842d3ab048095b",
     country: "USA",
     director: "NoName",
     duration: 134,
@@ -60,7 +60,7 @@ export const cardData = [
     nameEN:" Altyn4",
   },
   {
-    _id: "64d3ebd253842d3ab048095b",
+    _id: "564d3ebd253842d3ab048095b",
     country: "USA",
     director: "NoName",
     duration: 134,
@@ -75,7 +75,7 @@ export const cardData = [
     nameEN:" Altyn5",
   },
   {
-    _id: "64d3ebd253842d3ab048095b",
+    _id: "664d3ebd253842d3ab048095b",
     country: "USA",
     director: "NoName",
     duration: 134,
@@ -90,7 +90,7 @@ export const cardData = [
     nameEN:" Altyn6",
   },
   {
-    _id: "64d3ebd253842d3ab048095b",
+    _id: "764d3ebd253842d3ab048095b",
     country: "USA",
     director: "NoName",
     duration: 134,
@@ -105,7 +105,7 @@ export const cardData = [
     nameEN:" Altyn7",
   },
   {
-    _id: "64d3ebd253842d3ab048095b",
+    _id: "864d3ebd253842d3ab048095b",
     country: "USA",
     director: "NoName",
     duration: 134,
@@ -120,7 +120,7 @@ export const cardData = [
     nameEN:" Altyn8",
   },
   {
-    _id: "64d3ebd253842d3ab048095b",
+    _id: "964d3ebd253842d3ab048095b",
     country: "USA",
     director: "NoName",
     duration: 134,
@@ -135,7 +135,7 @@ export const cardData = [
     nameEN:" Altyn9",
   },
   {
-    _id: "64d3ebd253842d3ab048095b",
+    _id: "1064d3ebd253842d3ab048095b",
     country: "USA",
     director: "NoName",
     duration: 134,
@@ -150,7 +150,7 @@ export const cardData = [
     nameEN:" Altyn10",
   },
   {
-    _id: "64d3ebd253842d3ab048095b",
+    _id: "1164d3ebd253842d3ab048095b",
     country: "USA",
     director: "NoName",
     duration: 134,
@@ -165,7 +165,7 @@ export const cardData = [
     nameEN:" Altyn11",
   },
   {
-    _id: "64d3ebd253842d3ab048095b",
+    _id: "1264d3ebd253842d3ab048095b",
     country: "USA",
     director: "NoName",
     duration: 134,
@@ -180,7 +180,7 @@ export const cardData = [
     nameEN:" Altyn12",
   },
   {
-    _id: "64d3ebd253842d3ab048095b",
+    _id: "1364d3ebd253842d3ab048095b",
     country: "USA",
     director: "NoName",
     duration: 134,
@@ -195,7 +195,7 @@ export const cardData = [
     nameEN:" Altyn13",
   },
   {
-    _id: "64d3ebd253842d3ab048095b",
+    _id: "1464d3ebd253842d3ab048095b",
     country: "USA",
     director: "NoName",
     duration: 134,
@@ -210,7 +210,7 @@ export const cardData = [
     nameEN:" Altyn14",
   },
   {
-    _id: "64d3ebd253842d3ab048095b",
+    _id: "1564d3ebd253842d3ab048095b",
     country: "USA",
     director: "NoName",
     duration: 134,
@@ -225,7 +225,7 @@ export const cardData = [
     nameEN:" Altyn15",
   },
   {
-    _id: "64d3ebd253842d3ab048095b",
+    _id: "1664d3ebd253842d3ab048095b",
     country: "USA",
     director: "NoName",
     duration: 134,
@@ -240,7 +240,7 @@ export const cardData = [
     nameEN:" Altyn16",
   },
   {
-    _id: "64d3ebd253842d3ab048095b",
+    _id: "1764d3ebd253842d3ab048095b",
     country: "USA",
     director: "NoName",
     duration: 134,
@@ -255,7 +255,7 @@ export const cardData = [
     nameEN:" Altyn1 йцуйцуйццуйцу",
   },
   {
-    _id: "64d3ebd253842d3ab048095b",
+    _id: "1864d3ebd253842d3ab048095b",
     country: "USA",
     director: "NoName",
     duration: 134,
@@ -270,7 +270,7 @@ export const cardData = [
     nameEN:" Altyn2",
   },
   {
-    _id: "64d3ebd253842d3ab048095b",
+    _id: "64d3ebd253842d3ab048095b1",
     country: "USA",
     director: "NoName",
     duration: 134,
@@ -285,7 +285,7 @@ export const cardData = [
     nameEN:" Altyn3",
   },
   {
-    _id: "64d3ebd253842d3ab048095b",
+    _id: "64d3ebd253842d3ab048095b2",
     country: "USA",
     director: "NoName",
     duration: 134,
@@ -300,7 +300,7 @@ export const cardData = [
     nameEN:" Altyn4",
   },
   {
-    _id: "64d3ebd253842d3ab048095b",
+    _id: "64d3ebd253842d3ab048095b3",
     country: "USA",
     director: "NoName",
     duration: 134,
@@ -315,7 +315,7 @@ export const cardData = [
     nameEN:" Altyn5",
   },
   {
-    _id: "64d3ebd253842d3ab048095b",
+    _id: "64d3ebd253842d3ab048095b4",
     country: "USA",
     director: "NoName",
     duration: 134,
@@ -330,7 +330,7 @@ export const cardData = [
     nameEN:" Altyn6",
   },
   {
-    _id: "64d3ebd253842d3ab048095b",
+    _id: "64d3ebd253842d3ab048095b5",
     country: "USA",
     director: "NoName",
     duration: 134,
@@ -345,7 +345,7 @@ export const cardData = [
     nameEN:" Altyn7",
   },
   {
-    _id: "64d3ebd253842d3ab048095b",
+    _id: "64d3ebd253842d3ab048095b6",
     country: "USA",
     director: "NoName",
     duration: 134,
@@ -360,7 +360,7 @@ export const cardData = [
     nameEN:" Altyn8",
   },
   {
-    _id: "64d3ebd253842d3ab048095b",
+    _id: "64d3ebd253842d3ab048095b7",
     country: "USA",
     director: "NoName",
     duration: 134,
@@ -375,7 +375,7 @@ export const cardData = [
     nameEN:" Altyn9",
   },
   {
-    _id: "64d3ebd253842d3ab048095b",
+    _id: "64d3ebd253842d3ab048095b8",
     country: "USA",
     director: "NoName",
     duration: 134,
@@ -390,7 +390,7 @@ export const cardData = [
     nameEN:" Altyn10",
   },
   {
-    _id: "64d3ebd253842d3ab048095b",
+    _id: "64d3ebd253842d3ab048095b9",
     country: "USA",
     director: "NoName",
     duration: 134,
@@ -405,7 +405,7 @@ export const cardData = [
     nameEN:" Altyn11",
   },
   {
-    _id: "64d3ebd253842d3ab048095b",
+    _id: "64d3ebd2538412d3ab048095b",
     country: "USA",
     director: "NoName",
     duration: 134,
@@ -420,7 +420,7 @@ export const cardData = [
     nameEN:" Altyn12",
   },
   {
-    _id: "64d3ebd253842d3ab048095b",
+    _id: "64d3ebd2538422d3ab048095b",
     country: "USA",
     director: "NoName",
     duration: 134,
@@ -435,7 +435,7 @@ export const cardData = [
     nameEN:" Altyn13",
   },
   {
-    _id: "64d3ebd253842d3ab048095b",
+    _id: "64d3ebd2538423d3ab048095b",
     country: "USA",
     director: "NoName",
     duration: 134,
@@ -450,7 +450,7 @@ export const cardData = [
     nameEN:" Altyn14",
   },
   {
-    _id: "64d3ebd253842d3ab048095b",
+    _id: "64d3ebd2538442d3ab048095b",
     country: "USA",
     director: "NoName",
     duration: 134,
@@ -465,7 +465,7 @@ export const cardData = [
     nameEN:" Altyn15",
   },
   {
-    _id: "64d3ebd253842d3ab048095b",
+    _id: "64d3ebd2538425d3ab048095b",
     country: "USA",
     director: "NoName",
     duration: 134,

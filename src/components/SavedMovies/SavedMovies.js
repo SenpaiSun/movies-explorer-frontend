@@ -5,11 +5,12 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Footer from "../Footer/Footer";
 
 export default function SavedMovies(props) {
+
   return (
     <>
       <Header main={props.main} mainSaved={props.mainSaved}/>
       <SearchForm/>
-      <MoviesCardList mainSaved={props.mainSaved}/>
+      <MoviesCardList handleDelete = {props.handleDelete} cardData={props.cardData} mainSaved={props.mainSaved}/>
       <Footer/>
     </>
   )

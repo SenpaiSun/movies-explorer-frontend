@@ -10,6 +10,10 @@ export default function MoviesCard(props) {
     setIsLike(!isLike)
   }
 
+  const clickDelete = () => {
+    props.handleDelete(cardData._id)
+  }
+
   return (
     <li className="card">
       <a href={cardData.trailerLink} target='_blank' rel='noreferrer' className="card__link">
@@ -17,7 +21,7 @@ export default function MoviesCard(props) {
       </a>
       <div className="card__title">
         <h2 className="card__title_name">{cardData.nameRU}</h2>
-        <button className={props.main ? (!isLike ? 'card__title_like' : 'card__title_like card__title_like-active') : 'card__title_like card__title_like-delete'} onClick={clickLike}/>
+        <button className={props.main ? (!isLike ? 'card__title_like' : 'card__title_like card__title_like-active') : 'card__title_like card__title_like-delete'} onClick={props.main ? clickLike : clickDelete}/>
       </div>
       <p className="card__duration">{cardData.duration}</p>
     </li>

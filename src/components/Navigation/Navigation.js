@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 import './Navigation.css'
 
 export default function Navigation(props) {
-  console.log(props.main)
   return (
     <div className='navigation'>
       <div className='header__container-route'>

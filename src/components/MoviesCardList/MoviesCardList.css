@@ -1,13 +1,23 @@
 .movies {
+  min-height: calc(100vh - 482px);
+}
 
+.movies__not-found-card {
+  color: #FFF;
+  font-size: 16px;
+  text-align: center;
 }
 
 .movies__container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min-content, 269px));
   margin: 70px 70px 0;
-  justify-content: center;
+  justify-content: left;
   gap: 20px;
+}
+
+.movies__container-not-found {
+  justify-content: center;
 }
 
 .movies__load {
