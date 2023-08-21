@@ -58,31 +58,34 @@
 }
 
 .promo__logo {
-  margin: 0;
+  margin: 255px 0px 0 490px;
   padding: 0;
-  position: absolute;
-  max-width: 722px;
-  max-height: 244px;
-  right: 70px;
-  bottom: 60px
+  width: 722px;
+  height: 244px;
+  bottom: 60px;
+  background-image: url(../../images/text__COLOR_landing-logo.png);
+  background-repeat: no-repeat;
+  background-size:cover;
 }
 
 @media screen and (max-width: 768px) {
   .promo__logo {
     margin: 140px 0 0;
+    width: 100%;
     max-width: 680px;
     max-height: 230px;
     position: static;
-    right: 45px;
-    bottom: 0px;
+    background-size:cover;
   }
 }
 
 @media screen and (max-width: 440px) {
   .promo__logo {
-    margin: 74px 0 0;
+    margin: 72px 0 0;
     max-width: 680px;
     max-height: 230px;
-
+    background-size:cover;
+    background-position-x: -180px;
+    background-position-y: 0px;
   }
 }

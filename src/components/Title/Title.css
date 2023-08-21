@@ -9,11 +9,25 @@
   letter-spacing: -0.8px;
 }
 
+@media screen and (max-width:768px) {
+  .title__margin {
+    margin-top: -10px;
+  }
+}
+
+@media screen and (max-width:440px) {
+  .title__margin {
+    padding-top: 37px;
+  }
+}
+
+
 @media screen and (max-width: 768px) {
   .title__text {
     margin: 90px 50px 0 50px;
   }
 }
+
 
 @media screen and (max-width: 440px) {
   .title__text {
@@ -25,4 +39,20 @@
 
 .title__text-techs {
   margin-top: 100px;
+}
+
+.title__student-margin {
+  margin-top: 80px;
+}
+
+@media screen and (max-width: 768px) {
+  .title__student-margin {
+    margin-top: 60px;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  .title__student-margin {
+    margin: 100px 14px 0 14px;
+  }
 }

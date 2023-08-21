@@ -5,7 +5,7 @@ import Title from "../Title/Title";
 export default function Techs() {
   return (
     <section className="techs">
-      <Title titleName="Технологии" titleMargin="title__text-techs"/>
+      <Title marginSelector={'title__margin'} titleName="Технологии" titleMargin="title__text-techs"/>
       <h3 className="techs__title">7 технологий</h3>
       <p className="techs__acticle">На курсе веб-разработки мы освоили технологии, которые применили в дипломном проекте.</p>
       <ul className="techs__list">

@@ -1,7 +1,20 @@
 .about-me {
   display: flex;
   flex-direction: column;
+  padding-top: 30px;
 }
+
+@media screen and (max-width: 670px) {
+  .about-me {
+    padding-top: 28px;
+  }
+
+  .about-me .about-me__container {
+    justify-content: center;
+    align-items: center;
+  }
+}
+
 
 .about-me__container {
   display: flex;
@@ -9,6 +22,22 @@
   justify-content: space-between;
   margin: 66px 70px 0 70px;
   min-height: 370px;
+  gap: 30px;
+}
+
+@media screen and (max-width: 768px) {
+  .about-me__container {
+    margin: 66px 50px 0;
+  }
+}
+
+@media screen and (max-width: 670px) {
+  .about-me__container {
+    flex-direction: column-reverse;
+    justify-content: center;
+    width: 292px;
+    margin: 60px auto;
+  }
 }
 
 .about-me__info {
@@ -16,6 +45,13 @@
   flex-direction: column;
   max-width: 590px;
 }
+
+@media screen and (max-width: 768px) {
+  .about-me__info {
+    max-width: 364px;
+  }
+}
+
 
 .about-me__info_name {
   font-size: 50px;
@@ -27,6 +63,19 @@
   letter-spacing: -2px;
 }
 
+@media screen and (max-width: 768px) {
+  .about-me__info_name {
+    font-size: 40px;
+  }
+}
+
+@media screen and (max-width: 670px) {
+  .about-me__info_name {
+    font-size: 30px;
+    margin-top: 40px;
+  }
+}
+
 .about-me__info_prof {
   font-size: 18px;
   line-height: 1.4;
@@ -36,12 +85,41 @@
   letter-spacing: 0.11px;
 }
 
+@media screen and (max-width: 768px) {
+  .about-me__info_prof {
+    font-size: 12px;
+    margin-top: -6px;
+    margin-bottom: 19px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .about-me__info_prof {
+    font-size: 11px;
+    margin-top: 4px;
+  }
+}
+
+
 .about-me__info_me {
   font-size: 14px;
   line-height: 1.6;
   font-weight: 400;
   color: #FFF;
   margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .about-me__info_me {
+    font-size: 12px;
+    height: 196px;
+  }
+}
+
+@media screen and (max-width: 670px) {
+  .about-me__info_me {
+    margin-bottom: -42px;
+  }
 }
 
 .about-me__photo_me {
@@ -51,12 +129,33 @@
   object-fit: cover;
 }
 
+@media screen and (max-width: 768px) {
+  .about-me__photo_me {
+    width: 255px;
+    height: 307px;
+  }
+}
+
+@media screen and (max-width: 670px) {
+  .about-me__photo_me {
+    width: 292px;
+    height: 352px;
+  }
+}
+
 .about-me__info_github {
   list-style: none;
   color: #FFF;
   font-size: 14px;
   margin: auto 0 45px;
   text-decoration: none;
+}
+
+@media screen and (max-width: 768px) {
+  .about-me__info_github {
+    margin-top: 0;
+    font-weight: 500;
+  }
 }
 
 .about-me__info_github:hover {
