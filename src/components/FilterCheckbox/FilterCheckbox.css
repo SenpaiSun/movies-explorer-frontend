@@ -36,6 +36,10 @@
   border: 1px solid #fff;
 }
 
+@media screen and (max-width:768px) {
+  
+}
+
 input:checked + .toggle-shorts__slider {
   background-color: #343434;
 }

@@ -1,14 +1,36 @@
 import './MoviesCardList.css'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import MoviesCard from '../MoviesCard/MoviesCard'
 
 export default function MoviesCardList(props) {
+  const [windowSize, setWindowSize] = useState(window.innerWidth)
+
+  const handleResize = () => {
+    setWindowSize(window.innerWidth)
+  }
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize)
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
+
+  let cardAmount
+  if(windowSize <= 440) {
+    cardAmount = 5
+  } else if (windowSize <= 768) {
+    cardAmount = 8
+  } else {
+    cardAmount = 16
+  }
+
   const cards = props.cardData
 
-  const [cardVisible, setCardVisible] = React.useState(16)
+  const [cardVisible, setCardVisible] = React.useState(cardAmount)
 
   const loadMore = () => {
-    setCardVisible(cardVisible + 16)
+    setCardVisible(cardVisible + cardAmount)
   }
 
   const amountCard = cardVisible >=cards.length
