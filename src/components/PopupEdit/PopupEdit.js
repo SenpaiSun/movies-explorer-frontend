@@ -17,11 +17,11 @@ export default function PopupEdit() {
       <h4 className='popup-edit__title'>Привет, Нейм!</h4>
       <form className='popup-edit__container' onSubmit={handleForm}>
         <div className='popup-edit__container_mini'>
-          <p className='popup-edit__text'>Имя</p>
+          <p className={isStateInput ?'popup-edit__text' : 'popup-edit__text popup-edit__text-active'}>Имя</p>
           <input className='popup-edit__input' disabled={isStateInput} />
         </div>
         <div className='popup-edit__container_mini'>
-          <p className='popup-edit__text'>E-mail</p>
+          <p className={isStateInput ?'popup-edit__text' : 'popup-edit__text popup-edit__text-active'}>E-mail</p>
           <input className='popup-edit__input' disabled={isStateInput} />
         </div>
         {isStateInput ? (

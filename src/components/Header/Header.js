@@ -1,10 +1,35 @@
 import './Header.css'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import logo from '../../images/logo.png'
 import { Link } from 'react-router-dom'
 import Navigation from '../Navigation/Navigation'
+import HamburgerMenu from '../HamburgerMenu/HamurgerMenu'
 
 export default function Header(props) {
+  const [windowSize, setWindowSize] = useState(window.innerWidth)
+
+  const handleResize = () => {
+    setWindowSize(window.innerWidth)
+  }
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize)
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
+
+
+  const [isHamburgerMenu, setHamburgerMenu] = React.useState(false)
+  useEffect(() => {
+    if(windowSize > 768) {
+      setHamburgerMenu(false)
+    }
+  }, [windowSize])
+  function handleClickMenu() {
+    setHamburgerMenu(!isHamburgerMenu)
+  }
+
   return (
     <header className={props.landing ? 'header' : 'header header-main'}>
       <div className='header__container-logo'>
@@ -12,7 +37,7 @@ export default function Header(props) {
         <img className='header__logo' src={logo} alt='Логотип сервиса drow-films' />
       </Link>
       </div>
-      {props.main && <Navigation mainMovies={props.mainMovies} mainSaved={props.mainSaved} profile={props.profile}/>}
+      {(props.main && windowSize > 768) && <Navigation mainMovies={props.mainMovies} mainSaved={props.mainSaved} profile={props.profile}/>}
       {props.landing && (
         <div className='header__container'>
           <Link to='/signup' className='header__link-register'>
@@ -25,6 +50,7 @@ export default function Header(props) {
           </div>
         </div>
       )}
+      {(windowSize <= 768 && props.main) && <HamburgerMenu onClick={handleClickMenu}/>}
     </header>
   )
 }

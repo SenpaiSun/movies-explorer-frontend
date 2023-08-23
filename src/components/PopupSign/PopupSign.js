@@ -39,7 +39,7 @@ export default function PopupSign(props) {
           <p className='main-register__error main-register__error-active'>Что то пошло не так...</p>
         </span>
         <div className='main-register__container-button'>
-          <button type='submit' className={props.toRegister ? 'main-register__button-register' : 'main-register__button-register main-register__button-login'}>
+          <button type='submit' className={props.toRegister ? 'main-register__button-register main-register__button-register-margin' : 'main-register__button-register main-register__button-login'}>
             {props.buttonText}
           </button>
           <div className='main-register__container-link'>

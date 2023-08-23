@@ -10,7 +10,7 @@
 
 .movies__container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min-content, 290px));
+  grid-template-columns: repeat(auto-fit, minmax(min-content, 270px));
   margin: 70px 70px 0;
   justify-content: center;
   gap: 20px;
