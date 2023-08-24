@@ -1,22 +1,23 @@
-import React from "react";
 import './HamburgerMenu.css'
 import { Link, useLocation } from "react-router-dom";
 import accountLogo from '../../images/account.svg'
+import { useState } from 'react';
 
 export default function HamurgerMenu(props) {
   const location = useLocation()
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleClick = () => {
     setIsOpen(!isOpen);
     props.onClick();
   };
 
-  if (!isOpen) {
+  if (isOpen) {
     document.body.style.overflow = 'hidden';
   } else {
     document.body.style.overflow = 'auto';
   }
+
   return (
     <section className="hamburger">
       <div className={`hamburger-menu ${isOpen ? 'open' : ''}`} onClick={handleClick}>

@@ -76,6 +76,12 @@
   }
 }
 
+@media screen and (max-width: 440px) {
+  .about-me__info_name {
+    margin-top: 10px;
+  }
+}
+
 .about-me__info_prof {
   font-size: 18px;
   line-height: 1.4;
@@ -157,6 +163,7 @@
     font-weight: 500;
   }
 }
+
 
 .about-me__info_github:hover {
   opacity: 0.7;

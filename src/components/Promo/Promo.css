@@ -68,6 +68,12 @@
   background-size:cover;
 }
 
+@media screen and (max-width: 1214px) {
+  .promo__logo {
+    width: auto;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .promo__logo {
     margin: 140px 0 0;

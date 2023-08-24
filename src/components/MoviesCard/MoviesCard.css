@@ -98,6 +98,12 @@
   opacity: 0;
 }
 
+@media screen and (max-width: 440px) {
+  .card__title_like-delete  {
+    opacity: 1;
+  }
+}
+
 .card__title_like:hover {
   opacity: 0.8;
 }

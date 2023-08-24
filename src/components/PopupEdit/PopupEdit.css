@@ -11,6 +11,12 @@
   }
 }
 
+@media screen and (max-width: 440px) {
+  .popup-edit {
+    margin-top: 0px;
+  }
+}
+
 .popup-edit__title {
   color: #FFF;
   font-size: 24px;
@@ -25,6 +31,12 @@
   }
 }
 
+@media screen and (max-width: 440px) {
+  .popup-edit__title {
+    margin: 70px 0 79px;
+  }
+}
+
 .popup-edit__container {
   display: flex;
   flex-direction: column;
@@ -35,6 +47,14 @@
 @media screen and (max-width: 768px) {
   .popup-edit__container {
     gap: 8px
+  };
+}
+
+
+@media screen and (max-width: 440px) {
+  .popup-edit__container {
+    width: 81vw;
+
   };
 }
 
