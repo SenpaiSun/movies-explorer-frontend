@@ -1,18 +1,5 @@
 .techs {
   background-color: #272727;
-  height: 625px;
-}
-
-@media screen and (max-width: 768px) {
-  .techs {
-    height: 567px;
-  }
-}
-
-@media screen and (max-width: 440px) {
-  .techs {
-    height: 651px;
-  }
 }
 
 
@@ -85,6 +72,7 @@
 @media screen and (max-width: 768px) {
   .techs__list {
     margin-top: 85px;
+    margin-bottom: 89px;
   }
 }
 

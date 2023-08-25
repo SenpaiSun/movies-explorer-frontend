@@ -5,26 +5,15 @@
   font-weight: 400;
   border-bottom: solid #FFF 1px;
   margin: 110px 70px 0 70px;
-  padding-bottom: 25px;
+  padding-bottom: 23px;
   letter-spacing: -0.8px;
-}
-
-@media screen and (max-width:768px) {
-  .title__margin {
-    margin-top: -10px;
-  }
-}
-
-@media screen and (max-width:440px) {
-  .title__margin {
-    padding-top: 37px;
-  }
 }
 
 
 @media screen and (max-width: 768px) {
   .title__text {
     margin: 90px 50px 0 50px;
+    padding-bottom: 24px;
   }
 }
 
@@ -32,7 +21,20 @@
 @media screen and (max-width: 440px) {
   .title__text {
     margin: 72px 18px 0 18px;
+    padding-bottom: 25px;
     font-size: 18px;
+  }
+}
+
+@media screen and (max-width:768px) {
+  .techs__margin {
+    margin-top: -10px;
+  }
+}
+
+@media screen and (max-width:440px) {
+  .techs__margin {
+    padding-top: 37px;
   }
 }
 
@@ -41,18 +43,18 @@
   margin-top: 100px;
 }
 
-.title__student-margin {
+.about-me__student-margin {
   margin-top: 80px;
 }
 
 @media screen and (max-width: 768px) {
-  .title__student-margin {
+  .about-me__student-margin {
     margin-top: 60px;
   }
 }
 
 @media screen and (max-width: 440px) {
-  .title__student-margin {
-    margin: 100px 14px 0 14px;
+  .about-me__student-margin {
+    margin: 53px 14px 0 14px;
   }
 }

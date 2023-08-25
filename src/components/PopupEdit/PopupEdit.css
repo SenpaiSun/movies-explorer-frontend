@@ -58,7 +58,7 @@
   };
 }
 
-.popup-edit__container_mini {
+.popup-edit__container-mini {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -69,12 +69,12 @@
 }
 
 @media screen and (max-width: 768px) {
-  .popup-edit__container_mini {
+  .popup-edit__container-mini {
     margin: 8px 0 0;
   }
 }
 
-.popup-edit__container_mini:first-child {
+.popup-edit__container-mini:first-child {
   margin: 0;
   padding-bottom: 15px;
   border-bottom: 1px solid #424242;

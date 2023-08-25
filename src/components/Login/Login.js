@@ -1,5 +1,4 @@
 import PopupSign from '../PopupSign/PopupSign'
-import './Login.css'
 
 export default function Login(props) {
   return (

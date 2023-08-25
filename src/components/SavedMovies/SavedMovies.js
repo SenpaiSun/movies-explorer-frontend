@@ -11,7 +11,7 @@ export default function SavedMovies(props) {
       <Header main={props.main} mainSaved={props.mainSaved}/>
       <SearchForm/>
       <MoviesCardList handleDelete = {props.handleDelete} cardData={props.cardData} mainSaved={props.mainSaved}/>
-      <Footer/>
+      <Footer main={props.main}/>
     </>
   )
 }

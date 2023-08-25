@@ -1,12 +1,18 @@
 .about-me {
   display: flex;
   flex-direction: column;
-  padding-top: 30px;
+  padding-top: 31px;
 }
 
 @media screen and (max-width: 670px) {
   .about-me {
     padding-top: 28px;
+  }
+
+  @media screen and (max-width: 440px) {
+    .about-me {
+      padding-top: 0px;
+    }
   }
 
   .about-me .about-me__container {
@@ -20,8 +26,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 66px 70px 0 70px;
-  min-height: 370px;
+  margin: 67px 70px 0 70px;
   gap: 30px;
 }
 
@@ -40,6 +45,12 @@
   }
 }
 
+@media screen and (max-width: 440px) {
+  .about-me__container {
+    margin-bottom: 15px;
+  }
+}
+
 .about-me__info {
   display: flex;
   flex-direction: column;
@@ -53,7 +64,7 @@
 }
 
 
-.about-me__info_name {
+.about-me__info-name {
   font-size: 50px;
   line-height: 1.1;
   font-weight: 400;
@@ -64,25 +75,25 @@
 }
 
 @media screen and (max-width: 768px) {
-  .about-me__info_name {
+  .about-me__info-name {
     font-size: 40px;
   }
 }
 
 @media screen and (max-width: 670px) {
-  .about-me__info_name {
+  .about-me__info-name {
     font-size: 30px;
     margin-top: 40px;
   }
 }
 
 @media screen and (max-width: 440px) {
-  .about-me__info_name {
+  .about-me__info-name {
     margin-top: 10px;
   }
 }
 
-.about-me__info_prof {
+.about-me__info-prof {
   font-size: 18px;
   line-height: 1.4;
   font-weight: 400;
@@ -92,7 +103,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .about-me__info_prof {
+  .about-me__info-prof {
     font-size: 12px;
     margin-top: -6px;
     margin-bottom: 19px;
@@ -100,14 +111,14 @@
 }
 
 @media screen and (max-width: 320px) {
-  .about-me__info_prof {
+  .about-me__info-prof {
     font-size: 11px;
     margin-top: 4px;
   }
 }
 
 
-.about-me__info_me {
+.about-me__info-me {
   font-size: 14px;
   line-height: 1.6;
   font-weight: 400;
@@ -116,19 +127,26 @@
 }
 
 @media screen and (max-width: 768px) {
-  .about-me__info_me {
+  .about-me__info-me {
     font-size: 12px;
     height: 196px;
   }
 }
 
 @media screen and (max-width: 670px) {
-  .about-me__info_me {
+  .about-me__info-me {
     margin-bottom: -42px;
   }
 }
 
-.about-me__photo_me {
+@media screen and (max-width: 440px) {
+  .about-me__info-me {
+    font-size: 11px;
+    line-height: 1.5;
+  }
+}
+
+.about-me__photo-me {
   width: 270px;
   height: 327px;
   border-radius: 10px;
@@ -136,35 +154,41 @@
 }
 
 @media screen and (max-width: 768px) {
-  .about-me__photo_me {
+  .about-me__photo-me {
     width: 255px;
     height: 307px;
   }
 }
 
 @media screen and (max-width: 670px) {
-  .about-me__photo_me {
+  .about-me__photo-me {
     width: 292px;
     height: 352px;
   }
 }
 
-.about-me__info_github {
+.about-me__info-github {
   list-style: none;
   color: #FFF;
   font-size: 14px;
-  margin: auto 0 45px;
+  margin: 121px 0 45px;
   text-decoration: none;
 }
 
 @media screen and (max-width: 768px) {
-  .about-me__info_github {
+  .about-me__info-github {
     margin-top: 0;
     font-weight: 500;
   }
 }
 
+@media screen and (max-width: 440px) {
+  .about-me__info-github {
+    margin-bottom: 0px;
+  }
+}
 
-.about-me__info_github:hover {
+
+.about-me__info-github:hover {
   opacity: 0.7;
 }

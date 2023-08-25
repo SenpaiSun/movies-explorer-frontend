@@ -12,15 +12,19 @@ export default function PopupEdit() {
     setIsStateInput(!isStateInput)
   }
 
+  const goBack = () => {
+    window.history.go(-1)
+  }
+
   return (
     <main className='popup-edit'>
       <h4 className='popup-edit__title'>Привет, Нейм!</h4>
       <form className='popup-edit__container' onSubmit={handleForm}>
-        <div className='popup-edit__container_mini'>
+        <div className='popup-edit__container-mini'>
           <p className={isStateInput ?'popup-edit__text' : 'popup-edit__text popup-edit__text-active'}>Имя</p>
           <input className='popup-edit__input' disabled={isStateInput} />
         </div>
-        <div className='popup-edit__container_mini'>
+        <div className='popup-edit__container-mini'>
           <p className={isStateInput ?'popup-edit__text' : 'popup-edit__text popup-edit__text-active'}>E-mail</p>
           <input className='popup-edit__input' disabled={isStateInput} />
         </div>
@@ -29,7 +33,7 @@ export default function PopupEdit() {
             <button className='popup-edit__button-edit' onClick={editButton}>
               Редактировать
             </button>
-            <button className='popup-edit__button-exit'>Выйти из аккаунта</button>
+            <button className='popup-edit__button-exit' onClick={goBack}>Выйти из аккаунта</button>
           </div>
         ) : (
           <>

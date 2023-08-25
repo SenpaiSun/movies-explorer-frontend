@@ -1,11 +1,19 @@
 .about-project {
   background-color: #202020;
-  height: 608px;
+  margin-bottom: 98px;
 }
 
 @media screen and (max-width: 768px) {
   .about-project {
-    height: 585px;
+    background-color: #202020;
+    margin-bottom: 79px;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  .about-project {
+    background-color: #202020;
+    margin-bottom: 15px;
   }
 }
 

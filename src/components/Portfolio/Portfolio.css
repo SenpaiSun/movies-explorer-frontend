@@ -1,6 +1,5 @@
 .portfolio {
-  height: 481px;
-  margin: 0 70px 0 70px;
+  margin: 1px 70px 106px 70px;
 }
 
 @media screen and (max-width: 768px) {
@@ -11,7 +10,7 @@
 
 @media screen and (max-width: 440px) {
   .portfolio {
-    margin: -90px 14px;
+    margin: 0 14px;
   }
 }
 
@@ -24,9 +23,16 @@
 }
 
 
+@media screen and (max-width: 768px) {
+  .portfolio__title {
+    margin-top: 79px;
+  }
+}
+
 @media screen and (max-width: 440px) {
   .portfolio__title {
     font-size: 14px;
+    margin-top: 56px;
   }
 }
 
@@ -46,7 +52,16 @@
   }
 }
 
-.portfolio__list_item {
+.portfolio__list-item-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
+}
+
+.portfolio__list-item {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -55,29 +70,30 @@
 }
 
 @media screen and (max-width: 440px) {
-  .portfolio__list_item {
+  .portfolio__list-item {
     padding-bottom: 6px;
   }
 }
 
 @media screen and (max-width: 440px) {
-  .portfolio__list_item:last-child {
+  .portfolio__list-item:last-child {
     border: none;
   }
 }
 
-.portfolio__list_item_link {
+.portfolio__list-item-link {
   text-decoration: none;
   font-size: 30px;
   line-height: 1.7;
   font-weight: 400;
   letter-spacing: -1.2px;
   color: #fff;
+  margin: 0;
 }
 
 
 @media screen and (max-width: 768px) {
-  .portfolio__list_item_link {
+  .portfolio__list-item-link {
     letter-spacing: -1.12px;
     line-height: 50px;
     font-size: 28px;
@@ -85,25 +101,27 @@
 }
 
 @media screen and (max-width: 440px) {
-  .portfolio__list_item_link {
+  .portfolio__list-item-link {
     font-size: 18px;
     letter-spacing: -0.72px;
   }
 }
 
 
-.portfolio__list_item_link:hover {
+.portfolio__list-item-link:hover {
   opacity: 0.7;
 }
 
-.portfolio__list_item_link-arrow {
+.portfolio__list-item-link-arrow {
   position: relative;
   top: 4px;
   right: 1px;
+  margin: 0;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 440px) {
-  .portfolio__list_item_link-arrow {
+  .portfolio__list-item-link-arrow {
     top: 0px;
   }
 }

@@ -37,24 +37,24 @@
 
 .search-form {
   background: #202020;
-  height: 142px;
+  min-height: 142px;
   justify-content: center;
   align-items: center;
-  margin: 70px 70px 10px;
+  margin: 66px 70px 10px;
   border-bottom: 1px solid #424242;
 }
 
 @media screen and (max-width: 768px) {
   .search-form {
-    margin: 80px 30px 10px;
-    height: 182px;
+    margin: 0px 30px 10px;
+    min-height: 182px;
   }
 }
 
 @media screen and (max-width: 440px) {
   .search-form {
     margin: 80px 10px 10px;
-    height: 182px;
+    min-height: 182px;
   }
 }
 

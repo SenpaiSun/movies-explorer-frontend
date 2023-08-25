@@ -20,8 +20,8 @@ export default function MoviesCard(props) {
         <img className="card__image" src={cardData.image} alt={cardData.nameRU}/>
       </a>
       <div className="card__title">
-        <h2 className="card__title_name">{cardData.nameRU}</h2>
-        <button className={props.main ? (!isLike ? 'card__title_like' : 'card__title_like card__title_like-active') : 'card__title_like card__title_like-delete'} onClick={props.main ? clickLike : clickDelete}/>
+        <h2 className="card__title-name">{cardData.nameRU}</h2>
+        <button className={props.main ? (!isLike ? 'card__title-like' : 'card__title-like card__title-like-active') : 'card__title-like card__title-like-delete'} onClick={props.main ? clickLike : clickDelete}/>
       </div>
       <p className="card__duration">{cardData.duration}</p>
     </li>

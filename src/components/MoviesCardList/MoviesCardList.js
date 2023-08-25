@@ -44,7 +44,7 @@ export default function MoviesCardList(props) {
       </div>
       <div className='movies__load'>
         {!amountCard && (
-          <button className='movies__load_button' onClick={loadMore}>
+          <button className='movies__load-button' onClick={loadMore}>
             Еще
           </button>
         )}
