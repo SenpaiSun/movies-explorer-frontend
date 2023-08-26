@@ -18,10 +18,10 @@ export default function SearchForm() {
   }, [])
   return (
     <section className="search-form">
-      <div className="search-form__container">
+      <form className="search-form__container">
         <div className='search-form__settings-input'>
           {windowSize > 690 && <img className="search-form__logo" src={searchLogo} alt="Иконка лупы"></img>}
-          <input className="search-form__input" placeholder="Фильм"/>
+          <input className="search-form__input" placeholder="Фильм" type='search' required/>
           <button className="search-form__button-search" type="submit">Найти</button>
         </div>
         <div className='search-form__settings-toggle'>
@@ -30,7 +30,7 @@ export default function SearchForm() {
           </div>
           <p className="search-form__shortfilms">Короткометражки</p>
         </div>
-      </div>
+      </form>
     </section>
   )
 }

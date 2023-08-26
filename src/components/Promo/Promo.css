@@ -53,9 +53,9 @@
   margin: 100px 0px 61px 490px;
   padding: 0;
   width: 722px;
-  height: 244px;
+  min-height: 244px;
   bottom: 60px;
-  background-image: url(../../images/text__COLOR_landing-logo.png);
+  background-image: url(../../images/text__COLOR_landing-logo.svg);
   background-repeat: no-repeat;
   background-size:cover;
 }

@@ -1,7 +1,7 @@
 import './HamburgerMenu.css'
 import { Link, useLocation } from "react-router-dom";
 import accountLogo from '../../images/account.svg'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function HamurgerMenu(props) {
   const location = useLocation()
@@ -12,11 +12,14 @@ export default function HamurgerMenu(props) {
     props.onClick();
   };
 
-  if (isOpen) {
-    document.body.style.overflow = 'hidden';
-  } else {
-    document.body.style.overflow = 'auto';
-  }
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  }, [isOpen]);
+
 
   return (
     <section className="hamburger">
@@ -27,7 +30,7 @@ export default function HamurgerMenu(props) {
       </div>
       <div className={isOpen ? "hamburger-menu-container open" : 'hamburger-menu__container-disabled'}>
         {isOpen && <div className="hamburger-menu-overlay" onClick={handleClick} />}
-        <div className={isOpen ? "hamburger-menu__container-routes" : 'hamburger-menu__container-disabled'}>
+        <nav className={isOpen ? "hamburger-menu__container-routes" : 'hamburger-menu__container-disabled'}>
           <div className="hamburger-menu__container-links">
             <Link className={location.pathname === '/' ? "hamburger-menu__route hamburger-menu__route-location" : "hamburger-menu__route"} to='/'>Главная</Link>
             <Link className={location.pathname === '/movies' ? "hamburger-menu__route hamburger-menu__route-location" : "hamburger-menu__route"} to='/movies'>Фильмы</Link>
@@ -41,7 +44,7 @@ export default function HamurgerMenu(props) {
               <img className='hamburger-menu__account-logo' src={accountLogo} alt='Иконка аккаунта' />
             </div>
           </div>
-        </div>
+        </nav>
       </div>
     </section>
   )

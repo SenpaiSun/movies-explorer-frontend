@@ -15,7 +15,7 @@ export default function AboutMe() {
             <a className="about-me__info-github" rel="noreferrer" target="_blank" href="https://github.com/SenpaiSun">Github</a>
           </div>
           <div className="about-me__photo">
-            <img  className="about-me__photo-me" src={myPhoto} alt="Мое фото"/>
+            <img  className="about-me__photo-me" src={myPhoto} alt="Максим, фронтенд-разработчик"/>
           </div>
         </div>
     </section>

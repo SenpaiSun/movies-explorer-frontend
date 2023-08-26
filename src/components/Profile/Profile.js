@@ -6,7 +6,9 @@ export default function Profiler(props) {
   return (
     <>
       <Header main={true} profile={props.profile}/>
-      <PopupEdit/>
+      <main>
+        <PopupEdit/>
+      </main>
     </>
   )
 }

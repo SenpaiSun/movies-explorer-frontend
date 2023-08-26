@@ -9,8 +9,10 @@ export default function SavedMovies(props) {
   return (
     <>
       <Header main={props.main} mainSaved={props.mainSaved}/>
-      <SearchForm/>
-      <MoviesCardList handleDelete = {props.handleDelete} cardData={props.cardData} mainSaved={props.mainSaved}/>
+      <main>
+        <SearchForm/>
+        <MoviesCardList handleDelete = {props.handleDelete} cardData={props.cardData} mainSaved={props.mainSaved}/>
+      </main>
       <Footer main={props.main}/>
     </>
   )

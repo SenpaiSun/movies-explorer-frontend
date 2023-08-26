@@ -64,7 +64,6 @@
   margin: 0;
   background-color: #2F2F2F;
   border-radius: 9px;
-  height: 72px;
   align-items: center;
   min-width: 485px;
   justify-items: stretch;
@@ -85,7 +84,6 @@
   margin: 0;
   background-color: #2F2F2F;
   border-radius: 9px;
-  height: 72px;
   align-items: center;
   justify-content: right;
 }
@@ -102,7 +100,6 @@
   margin: 0;
   background-color: #2F2F2F;
   border-radius: 9px;
-  height: 72px;
   align-items: center;
   justify-content: right;
 }
@@ -111,7 +108,6 @@
   .search-form__settings-toggle {
     background-color: #202020;
     border-radius: 9px;
-    height: 30px;
     align-items: center;
     justify-content: center;
     margin-top: 40px;
@@ -132,6 +128,11 @@
   color: #FFF;
 }
 
+.search-form__input:focus {
+  border-bottom: 1px #4285F4 solid;
+  outline: #4285F4;
+}
+
 @media screen and (max-width: 690px) {
   .search-form__input {
     margin-left: 19px;
@@ -146,7 +147,7 @@
   border: none;
   margin: 19px 30px 19px;
   width: 58.65px;
-  height: 34px;
+  min-height: 34px;
   border-radius: 48px;
   color: #FFF;
   font-size: 11px;
@@ -170,7 +171,6 @@
   position: relative;
   background-color: #343434;
   width: 36px;
-  height: 20px;
   border-radius: 50px;
   border: none;
   margin: 0 0 0 29px;

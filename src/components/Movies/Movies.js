@@ -8,8 +8,10 @@ export default function Movies(props) {
   return (
     <>
       <Header main={props.main} mainMovies={props.mainMovies}/>
-      <SearchForm/>
-      <MoviesCardList main={props.main} cardData={props.cardData}/>
+      <main>
+        <SearchForm/>
+        <MoviesCardList main={props.main} cardData={props.cardData}/>
+      </main>
       <Footer main={props.main}/>
     </>
   )

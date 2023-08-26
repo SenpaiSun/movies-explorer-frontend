@@ -39,6 +39,10 @@
 
 }
 
+.main-register__logo:hover {
+  opacity: 0.7;
+}
+
 .main-register__title {
   font-size: 24px;
   font-weight: 500;
@@ -56,7 +60,7 @@
 
 .main-register__container-input {
   border-bottom: 1px #8B8B8B solid;
-  height: 44px;
+  min-height: 44px;
 }
 
 .main-register__input-name {
@@ -85,6 +89,7 @@
 
 .main-register__container-input:focus-within {
   border-bottom: 1px #4285F4 solid;
+  outline: #4285F4;
 }
 
 .main-register__error {
@@ -112,7 +117,7 @@ opacity: 1;
   background: #4285F4;
   border: none;
   border-radius: 3px;
-  height: 45px;
+  min-height: 45px;
   font-size: 14px;
   font-weight: 500;
   line-height: normal;

@@ -61,11 +61,12 @@
 .popup-edit__container-mini {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: start;
   align-items: center;
   margin: 16px 0 0;
   padding: 0;
   width: 100%;
+  gap: 5px;
 }
 
 @media screen and (max-width: 768px) {
@@ -87,6 +88,7 @@
   font-weight: 500;
   line-height: normal;
   margin: 0;
+  width: 10%;
 }
 
 .popup-edit__text-active {
@@ -94,7 +96,6 @@
 }
 
 .popup-edit__input {
-  height: 14px;
   background-color: #202020;
   border: none;
   color: #FFF;
@@ -105,6 +106,12 @@
   text-align: right;
   margin: 0;
   letter-spacing: -0.3px;
+  width: 100%;
+}
+
+.popup-edit__input:focus {
+  border-bottom: 1px #0fb676 solid;
+  outline: #0fb676;
 }
 
 .popup-edit__button-container {
@@ -162,7 +169,7 @@
   margin: 0;
   border: none;
   background-color: #3456F3;
-  height: 45px;
+  min-height: 45px;
   border-radius: 3px;
   color: #fff;
   cursor: pointer;

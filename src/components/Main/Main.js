@@ -7,14 +7,17 @@ import Portfolio from '../Portfolio/Portfolio';
 import Footer from '../Footer/Footer'
 
 export default function Main(props) {
+  document.body.style.overflow = 'auto';
   return (
     <>
       <Header landing={props.landing}/>
-      <Promo/>
-      <AboutProject/>
-      <Techs/>
-      <AboutMe/>
-      <Portfolio/>
+      <main>
+        <Promo/>
+        <AboutProject/>
+        <Techs/>
+        <AboutMe/>
+        <Portfolio/>
+      </main>
       <Footer/>
     </>
   )

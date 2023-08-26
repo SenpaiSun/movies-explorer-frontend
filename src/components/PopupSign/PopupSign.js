@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from '../../images/logo.png'
+import logo from '../../images/logo.svg'
 import './PopupSign.css'
 import { Link } from 'react-router-dom'
 
@@ -17,7 +17,7 @@ export default function PopupSign(props) {
           <>
             <div className='main-register__container-input'>
               <p className='main-register__input-name'>Имя</p>
-              <input className='main-register__input' />
+              <input className='main-register__input' type='text' placeholder='Иван' minlength="2" maxlength="30" required/>
             </div>
             <span className='main-register__span'>
               <p className='main-register__error'>Что то пошло не так...</p>
@@ -26,14 +26,14 @@ export default function PopupSign(props) {
         )}
         <div className='main-register__container-input'>
           <p className='main-register__input-name'>E-mail</p>
-          <input className='main-register__input' />
+          <input className='main-register__input' type='email' placeholder='pochta@yandex.ru' required/>
         </div>
         <span className='main-register__span'>
           <p className='main-register__error'>Что то пошло не так...</p>
         </span>
         <div className='main-register__container-input'>
           <p className='main-register__input-name'>Пароль</p>
-          <input className='main-register__input main-register__input-error' type='password' />
+          <input className='main-register__input main-register__input-error' type='password' placeholder='Пароль' minlength="6" maxlength="30" required/>
         </div>
         <span className='main-register__span'>
           <p className='main-register__error main-register__error-active'>Что то пошло не так...</p>

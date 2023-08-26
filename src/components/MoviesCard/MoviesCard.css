@@ -83,14 +83,14 @@
   border: none;
   border-radius: 50px;
   padding: 0;
-  background-image: url(../../images/icon__like_inactive.png);
+  background-image: url(../../images/icon__like_inactive.svg);
   background-repeat: no-repeat;
   background-position: center;
   cursor: pointer;
 }
 
 .card__title-like-active {
-  background-image: url(../../images/icon__like_active.png);
+  background-image: url(../../images/icon__like_active.svg);
 }
 
 .card__title-like-delete  {

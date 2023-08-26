@@ -149,6 +149,10 @@
   padding-bottom: 4px;
 }
 
+.hamburger-menu__route:hover {
+  opacity: 0.7;
+}
+
 .hamburger-menu__route-location {
   border-bottom: 2px solid #FFF;
 }

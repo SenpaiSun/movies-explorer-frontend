@@ -5,7 +5,7 @@ import './Navigation.css'
 
 export default function Navigation(props) {
   return (
-    <div className='navigation'>
+    <nav className='navigation'>
       <div className='header__container-route'>
         <Link className={props.mainMovies ? 'header__link-header header__link-header-active' : 'header__link-header'} to='/movies'>
           Фильмы
@@ -22,6 +22,6 @@ export default function Navigation(props) {
           <img className='header__account-logo' src={accountLogo} alt='Иконка аккаунта' />
         </div>
       </div>
-    </div>
+    </nav>
   )
 }
