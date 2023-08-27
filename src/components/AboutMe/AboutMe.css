@@ -32,7 +32,7 @@
 
 @media screen and (max-width: 768px) {
   .about-me__container {
-    margin: 66px 50px 0;
+    margin: 64px 50px 0;
   }
 }
 
@@ -106,14 +106,14 @@
   .about-me__info-prof {
     font-size: 12px;
     margin-top: -6px;
-    margin-bottom: 19px;
+    margin-bottom: 22px;
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 440px) {
   .about-me__info-prof {
     font-size: 11px;
-    margin-top: 4px;
+    margin-top: 2px;
   }
 }
 
@@ -129,13 +129,8 @@
 @media screen and (max-width: 768px) {
   .about-me__info-me {
     font-size: 12px;
-    height: 196px;
-  }
-}
-
-@media screen and (max-width: 670px) {
-  .about-me__info-me {
-    margin-bottom: -42px;
+    min-height: 193px;
+    line-height: 1.5;
   }
 }
 
@@ -143,6 +138,7 @@
   .about-me__info-me {
     font-size: 11px;
     line-height: 1.5;
+    min-height: 149px;
   }
 }
 
@@ -177,7 +173,7 @@
 
 @media screen and (max-width: 768px) {
   .about-me__info-github {
-    margin-top: 0;
+    margin-top: 2px;
     font-weight: 500;
   }
 }

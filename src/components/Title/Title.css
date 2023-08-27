@@ -20,15 +20,9 @@
 
 @media screen and (max-width: 440px) {
   .title__text {
-    margin: 72px 18px 0 18px;
-    padding-bottom: 25px;
+    margin: 70px 18px 0 18px;
+    padding-bottom: 27px;
     font-size: 18px;
-  }
-}
-
-@media screen and (max-width:768px) {
-  .techs__margin {
-    margin-top: -10px;
   }
 }
 
@@ -40,7 +34,22 @@
 
 
 .title__text-techs {
-  margin-top: 100px;
+  margin-top: 96px;
+  padding-top: 100px;
+}
+
+@media screen and (max-width:768px) {
+  .title__text-techs {
+    margin-top: 78px;
+    padding-top: 90px;
+  }
+}
+
+@media screen and (max-width:440px) {
+  .title__text-techs {
+    margin-top: 0px;
+    padding-top: 89px;
+  }
 }
 
 .about-me__student-margin {
@@ -49,12 +58,14 @@
 
 @media screen and (max-width: 768px) {
   .about-me__student-margin {
-    margin-top: 60px;
+    padding-top: 60px;
+    margin-top: 0;
   }
 }
 
 @media screen and (max-width: 440px) {
   .about-me__student-margin {
-    margin: 53px 14px 0 14px;
+    margin: 0px 14px 0 14px;
+    padding-top: 52px;
   }
 }

@@ -3,6 +3,7 @@
   margin: 0;
   padding: 0;
   position: relative;
+  width: 100%;
 }
 
 @media screen and (max-width: 768px) {
@@ -16,8 +17,8 @@
 
 
 .promo__text {
-  margin: 46px 0 0 70px;
-  padding: 0;
+  margin: 0 10px 0 70px;
+  padding: 46px 0 404px;
   color: #FFF;
   font-size: 40px;
   line-height: 1.33;
@@ -33,57 +34,53 @@
 @media screen and (max-width: 768px) {
   .promo__text {
     text-align: center;
-    margin-top: 295px;
-    margin-left: 0px;
+    margin-top: 296px;
+    margin-bottom: 438px;
+    margin-left: 9px;
+    padding: 0;
   }
 }
 
 @media screen and (max-width: 440px) {
   .promo__text {
     margin-top: 180px;
+    margin-bottom: 60px;
     font-size: 31px;
     max-width: 300px;
     left: 8px;
     letter-spacing: -1.2px;
     line-height: 1.26;
+    margin-bottom: 330px;
   }
 }
 
 .promo__logo {
-  margin: 100px 0px 61px 490px;
-  padding: 0;
+  position: absolute;
   width: 722px;
-  min-height: 244px;
-  bottom: 60px;
+  min-height: 245px;
+  top: 253px;
+  right: 70px;
   background-image: url(../../images/text__COLOR_landing-logo.svg);
   background-repeat: no-repeat;
-  background-size:cover;
-}
-
-@media screen and (max-width: 1214px) {
-  .promo__logo {
-    width: auto;
-  }
+  background-size:auto;
 }
 
 @media screen and (max-width: 768px) {
   .promo__logo {
-    margin: 140px 0 68px;
-    width: 100%;
-    max-width: 680px;
-    max-height: 230px;
-    position: static;
-    background-size:cover;
+    width: 680px;
+    top: 620px;
+    right: 44px;
+    background-size:contain;
   }
 }
 
 @media screen and (max-width: 440px) {
   .promo__logo {
-    margin: 61px 0 39px;
-    max-width: 680px;
-    max-height: 230px;
-    background-size:cover;
-    background-position-x: -180px;
-    background-position-y: 0px;
+    width: auto;
+    top: 434px;
+    left: -359px;
+    right: 0px;
+    min-height: 240px;
+    background-position: 180px 0px;
   }
 }

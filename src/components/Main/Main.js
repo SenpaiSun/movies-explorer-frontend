@@ -11,7 +11,7 @@ export default function Main(props) {
   return (
     <>
       <Header landing={props.landing}/>
-      <main>
+      <main className='main'>
         <Promo/>
         <AboutProject/>
         <Techs/>

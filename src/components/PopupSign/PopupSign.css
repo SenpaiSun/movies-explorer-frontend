@@ -36,7 +36,7 @@
 
 .main-register__logo {
   width: 38px;
-
+  border-radius: 20%;
 }
 
 .main-register__logo:hover {

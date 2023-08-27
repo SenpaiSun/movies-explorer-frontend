@@ -40,7 +40,7 @@
   min-height: 142px;
   justify-content: center;
   align-items: center;
-  margin: 66px 70px 10px;
+  margin: 66px 70px 0;
   border-bottom: 1px solid #424242;
 }
 
@@ -53,7 +53,7 @@
 
 @media screen and (max-width: 440px) {
   .search-form {
-    margin: 80px 10px 10px;
+    margin: 3px 10px 10px;
     min-height: 182px;
   }
 }
@@ -75,6 +75,14 @@
     grid-template-columns: 1fr;
     grid-template-rows: max-content min-content;
     min-width: 300px;
+    background-color: #202020;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  .search-form__container {
+    gap: 45px;
+    background-color: #202020;
   }
 }
 
@@ -111,6 +119,15 @@
     align-items: center;
     justify-content: center;
     margin-top: 40px;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  .search-form__settings-toggle {
+    background-color: #202020;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0px;
   }
 }
 

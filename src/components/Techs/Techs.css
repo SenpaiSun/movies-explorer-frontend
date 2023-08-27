@@ -51,7 +51,7 @@
 @media screen and (max-width: 440px) {
   .techs__acticle {
     font-size: 11px;
-    margin-top: 25px;
+    margin-top: 23px;
     max-width: 292px;
     letter-spacing: -0.44px;
     line-height: 16px;
@@ -65,14 +65,15 @@
   list-style: none;
   justify-content: center;
   gap: 10px;
-  margin: 100px 0;
-  padding: 0;
+  margin: 100px 0 0;
+  padding: 0 0 100px;
 }
 
 @media screen and (max-width: 768px) {
   .techs__list {
     margin-top: 85px;
-    margin-bottom: 89px;
+    margin-bottom: 0;
+    padding: 0 0 90px;
   }
 }
 

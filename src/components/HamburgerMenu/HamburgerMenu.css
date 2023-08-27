@@ -62,14 +62,14 @@
 }
 
 .hamburger-menu.open .hamburger-menu__top {
-  transform: rotate(45deg) translate(3.4px, 1px) translateX(14px) translateY(-14px);
+  transform: rotate(45deg) translate(3.4px, 1px) translateX(30px) translateY(4px);
   transition-delay: 0.1s;
   width: 22px;
 }
 
 @media screen and (max-width:440px) {
   .hamburger-menu.open .hamburger-menu__top {
-    transform: rotate(45deg) translate(3.4px, 1px) translateX(-2px) translateY(-12px);
+    transform: rotate(45deg) translate(3.4px, 1px) translateX(16px) translateY(7px);
     transition-delay: 0.1s;
     width: 22px;
   }
@@ -81,14 +81,14 @@
 }
 
 .hamburger-menu.open .hamburger-menu__bot {
-  transform: rotate(-45deg) translate(3px, 0px) translateX(14px) translateY(14px);
+  transform: rotate(-45deg) translate(3px, 0px) translateX(-4px) translateY(30px);
   transition-delay: 0.1s;
   width: 22px;
 }
 
 @media screen and (max-width:440px) {
   .hamburger-menu.open .hamburger-menu__bot {
-    transform: rotate(-45deg) translate(-2px, 0px) translateX(16px) translateY(-2px);
+    transform: rotate(-45deg) translate(-2px, 0px) translateX(-3px) translateY(16px);
     transition-delay: 0.1s;
     width: 22px;
   }
