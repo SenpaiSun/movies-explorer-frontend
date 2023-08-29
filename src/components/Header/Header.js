@@ -39,16 +39,16 @@ export default function Header(props) {
       </nav>
       {props.main && windowSize > 768 && <Navigation mainMovies={props.mainMovies} mainSaved={props.mainSaved} profile={props.profile} />}
       {props.landing && (
-        <div className='header__container'>
+        <nav className='header__container'>
           <Link to='/signup' className='header__link-register'>
             Регистрация
           </Link>
-          <div className='header__container-link'>
+          <nav className='header__container-link'>
             <Link to='/signin' className='header__link-signin'>
               Войти
             </Link>
-          </div>
-        </div>
+          </nav>
+        </nav>
       )}
       {windowSize <= 768 && props.main && <HamburgerMenu onClick={handleClickMenu} />}
     </header>

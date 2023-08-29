@@ -12,7 +12,7 @@ export default function PopupSign(props) {
            <img src={logo} className='main-register__logo' alt='Логотип сервиса' />
           </Link>
         </div>
-        <h3 className='main-register__title'>{props.title}</h3>
+        <h1 className='main-register__title'>{props.title}</h1>
         {props.toRegister && (
           <>
             <div className='main-register__container-input'>

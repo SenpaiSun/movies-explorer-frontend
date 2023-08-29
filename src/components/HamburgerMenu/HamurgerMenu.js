@@ -28,7 +28,7 @@ export default function HamurgerMenu(props) {
         <div className="hamburger-menu__line hamburger-menu__mid"/>
         <div className="hamburger-menu__line hamburger-menu__bot"/>
       </div>
-      <div className={isOpen ? "hamburger-menu-container open" : 'hamburger-menu__container-disabled'}>
+      <div className={isOpen ? "hamburger-menu__container open" : 'hamburger-menu__container-disabled'}>
         {isOpen && <div className="hamburger-menu-overlay" onClick={handleClick} />}
         <nav className={isOpen ? "hamburger-menu__container-routes" : 'hamburger-menu__container-disabled'}>
           <div className="hamburger-menu__container-links">

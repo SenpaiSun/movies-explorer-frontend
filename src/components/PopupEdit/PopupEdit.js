@@ -27,7 +27,7 @@ export default function PopupEdit() {
 
   return (
     <section className='popup-edit'>
-      <h4 className='popup-edit__title'>Привет, Нейм!</h4>
+      <h1 className='popup-edit__title'>Привет, Нейм!</h1>
       <form className='popup-edit__container' onSubmit={handleForm}>
         <div className='popup-edit__container-mini'>
           <p className={isStateInput ?'popup-edit__text' : 'popup-edit__text popup-edit__text-active'}>Имя</p>
