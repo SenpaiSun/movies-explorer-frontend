@@ -7,11 +7,51 @@ import Profile from '../Profile/Profile'
 import Register from '../Register/Register'
 import Login from '../Login/Login'
 import NotFound from '../NotFound/NotFound'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { cardData } from '../../utils/cardData'
 import { savedCard } from '../../utils/savedCard'
+import moviesApiCards from '../../utils/MoviesApi'
 
 function App() {
+  const [getCards, setGetCards] = useState([])
+  const [saveBaseCards, setSaveBaseCards] = useState([])
+  const [isCheckedShorts, setIsCheckedShorts] = useState(
+    localStorage.getItem("isCheckedShorts") === "true"
+  );
+
+  const handleToggle = () => {
+    setIsCheckedShorts(!isCheckedShorts);
+    localStorage.setItem("isCheckedShorts", !isCheckedShorts);
+  };
+
+  useEffect(() => {
+    localStorage.setItem("isCheckedShorts", isCheckedShorts);
+  }, [isCheckedShorts]);
+
+  useEffect(() => {
+    if(isCheckedShorts) {
+      moviesApiCards.getBaseCards().then((res) => {
+        setGetCards(res)
+        setSaveBaseCards(res)
+      })
+      .catch(console.error)
+    } else {
+      moviesApiCards.getBaseCards()
+      .then((res) => {
+        const filterCards = res.filter(card => card.duration > 50)
+        setGetCards(filterCards)
+        setSaveBaseCards(filterCards)
+      })
+      .catch(console.error)
+    }
+  }, [isCheckedShorts])
+
+  const getCardsByName = (value) => {
+    setGetCards(saveBaseCards.filter(card => {
+      return card.nameRU.toLowerCase().includes(value.toLowerCase()) || card.nameEN.toLowerCase().includes(value.toLowerCase())
+    }))
+  }
+
   const [arrayCard, setArrayCard] = useState(savedCard)
 
   const handleDeleteCard = (cardId) => {
@@ -24,7 +64,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Main landing={true} />} />
 
-        <Route path='/movies' element={<Movies main={true} cardData={cardData} mainMovies={true} />} />
+        <Route path='/movies' element={<Movies main={true} cardData={cardData} mainMovies={true} getCards={getCards} getCardsByName={getCardsByName} handleToggle={handleToggle} isCheckedShorts={isCheckedShorts}/>} />
 
         <Route path='/saved-movies' element={<SavedMovies cardData={arrayCard} handleDelete={handleDeleteCard} main={true} mainSaved={true} />} />
 

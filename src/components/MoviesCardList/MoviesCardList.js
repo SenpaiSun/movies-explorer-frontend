@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import MoviesCard from '../MoviesCard/MoviesCard'
 
 export default function MoviesCardList(props) {
+
   const [windowSize, setWindowSize] = useState(window.innerWidth)
 
   const handleResize = () => {
@@ -17,20 +18,29 @@ export default function MoviesCardList(props) {
   }, [])
 
   let cardAmount
-  if(windowSize <= 440) {
+
+  if(windowSize <= 480) {
     cardAmount = 5
   } else if (windowSize <= 768) {
     cardAmount = 8
-  } else {
+  } else if (windowSize <= 1569){
     cardAmount = 16
+  } else {
+    cardAmount = 20
   }
 
-  const cards = props.cardData
+  const cards = props.getCards
 
   const [cardVisible, setCardVisible] = React.useState(cardAmount)
 
   const loadMore = () => {
-    setCardVisible(cardVisible + cardAmount)
+    if (windowSize <= 768) {
+      setCardVisible(cardVisible + 2)
+    } else if (windowSize <= 1569){
+      setCardVisible(cardVisible + 4)
+    } else {
+      setCardVisible(cardVisible + 5)
+    }
   }
 
   const amountCard = cardVisible >=cards.length
@@ -39,7 +49,7 @@ export default function MoviesCardList(props) {
     <section className='movies'>
       <div className={ cards.length !== 0 ? 'movies__container' : 'movies__container movies__container-not-found'}>
         {cards.length !== 0 ? (cards.slice(0, cardVisible).map((el) => (
-          <MoviesCard handleDelete = {props.handleDelete} mainSaved={props.mainSaved} main={props.main} key={el._id} card={el} />
+          <MoviesCard handleDelete = {props.handleDelete} mainSaved={props.mainSaved} main={props.main} key={el.id} card={el} />
         ))) : <p className='movies__not-found-card'>Похоже, ничего не найдено..</p>}
       </div>
       <div className='movies__load'>

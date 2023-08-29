@@ -9,8 +9,8 @@ export default function Movies(props) {
     <>
       <Header main={props.main} mainMovies={props.mainMovies}/>
       <main>
-        <SearchForm/>
-        <MoviesCardList main={props.main} cardData={props.cardData}/>
+        <SearchForm getCardsByName={props.getCardsByName} handleToggle={props.handleToggle} isCheckedShorts={props.isCheckedShorts}/>
+        <MoviesCardList main={props.main} cardData={props.cardData} getCards={props.getCards}/>
       </main>
       <Footer main={props.main}/>
     </>

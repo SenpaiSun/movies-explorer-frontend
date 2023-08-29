@@ -17,7 +17,7 @@ export default function MoviesCard(props) {
   return (
     <li className="card">
       <a href={cardData.trailerLink} target='_blank' rel='noreferrer' className="card__link">
-        <img className="card__image" src={cardData.image} alt={cardData.nameRU}/>
+        <img className="card__image" src={`https://api.nomoreparties.co/${cardData.image.url}`} alt={cardData.nameRU}/>
       </a>
       <div className="card__title">
         <h2 className="card__title-name">{cardData.nameRU}</h2>
