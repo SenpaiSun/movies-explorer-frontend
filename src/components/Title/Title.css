@@ -1,0 +1,71 @@
+.title__text {
+  color: #FFF;
+  font-size: 22px;
+  line-height: 1.2;
+  font-weight: 400;
+  border-bottom: solid #FFF 1px;
+  margin: 110px 70px 0 70px;
+  padding-bottom: 23px;
+  letter-spacing: -0.8px;
+}
+
+
+@media screen and (max-width: 768px) {
+  .title__text {
+    margin: 90px 50px 0 50px;
+    padding-bottom: 24px;
+  }
+}
+
+
+@media screen and (max-width: 440px) {
+  .title__text {
+    margin: 70px 18px 0 18px;
+    padding-bottom: 27px;
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width:440px) {
+  .techs__margin {
+    padding-top: 37px;
+  }
+}
+
+
+.title__text-techs {
+  margin-top: 96px;
+  padding-top: 100px;
+}
+
+@media screen and (max-width:768px) {
+  .title__text-techs {
+    margin-top: 78px;
+    padding-top: 90px;
+  }
+}
+
+@media screen and (max-width:440px) {
+  .title__text-techs {
+    margin-top: 0px;
+    padding-top: 89px;
+  }
+}
+
+.about-me__student-margin {
+  margin-top: 80px;
+}
+
+@media screen and (max-width: 768px) {
+  .about-me__student-margin {
+    padding-top: 60px;
+    margin-top: 0;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  .about-me__student-margin {
+    margin: 0px 14px 0 14px;
+    padding-top: 52px;
+  }
+}
