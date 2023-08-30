@@ -20,8 +20,13 @@ export default function SearchForm(props) {
   function handleSearchCard(event) {
     event.preventDefault()
     const inputValue = document.querySelector('.search-form__input').value
-    console.log(inputValue)
-    props.getCardsByName(inputValue)
+    const errorValidation = document.querySelector('.search-form__error')
+    if(inputValue.length > 0){
+      errorValidation.classList.remove('search-form__error-active')
+      props.getCardsByName(inputValue)
+    } else {
+      errorValidation.classList.add('search-form__error-active')
+    }
   }
 
   return (
@@ -39,6 +44,7 @@ export default function SearchForm(props) {
           <p className="search-form__shortfilms">Короткометражки</p>
         </div>
       </form>
+      <p className='search-form__error'>Нужно ввести ключевое слово</p>
     </section>
   )
 }

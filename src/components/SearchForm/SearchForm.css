@@ -42,6 +42,7 @@
   align-items: center;
   margin: 66px 70px 0;
   border-bottom: 1px solid #424242;
+  text-align: center;
 }
 
 @media screen and (max-width: 768px) {
@@ -251,4 +252,13 @@
     font-size: 11px;
     line-height: 18px;
   }
+}
+
+.search-form__error {
+  color: red;
+  opacity: 0;
+}
+
+.search-form__error-active {
+  opacity: 1;
 }

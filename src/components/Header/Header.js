@@ -37,8 +37,8 @@ export default function Header(props) {
           <img className='header__logo' src={logo} alt='Логотип сервиса drow-films' />
         </Link>
       </nav>
-      {props.main && windowSize > 768 && <Navigation mainMovies={props.mainMovies} mainSaved={props.mainSaved} profile={props.profile} />}
-      {props.landing && (
+      {props.main && windowSize > 768 && props.isLogged && <Navigation mainMovies={props.mainMovies} mainSaved={props.mainSaved} profile={props.profile} />}
+      {props.landing && props.isLogged && (
         <nav className='header__container'>
           <Link to='/signup' className='header__link-register'>
             Регистрация
