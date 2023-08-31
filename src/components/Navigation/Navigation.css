@@ -9,6 +9,11 @@
   width: 100%;
 }
 
+.navigation-active {
+  background-color: #073042;
+  align-items: start;
+}
+
 .header__link-header {
   text-decoration: none;
   color: #FFF;

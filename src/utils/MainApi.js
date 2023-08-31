@@ -35,7 +35,16 @@ export class MainApi {
     .then((res) => this._checkedError(res))
   };
 
+  checkToken(token) {
+    return fetch(`${this._url}/users/me`, {
+      method: 'GET',
+      headers: this._headers
+    })
+    .then((res) => this._checkedError(res))
+  }
+
 };
+
 
 export const apiBeatfilm = new MainApi({
   url: 'https://api.drow-films.nomoreparties.co',

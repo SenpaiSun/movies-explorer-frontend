@@ -1,13 +1,14 @@
 import './Header.css'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import logo from '../../images/logo.svg'
 import { Link } from 'react-router-dom'
 import Navigation from '../Navigation/Navigation'
 import HamburgerMenu from '../HamburgerMenu/HamurgerMenu'
+import { CurrentUserContext } from '../CurrentUserContext/CurrentUserContext'
 
 export default function Header(props) {
   const [windowSize, setWindowSize] = useState(window.innerWidth)
-
+  const currentUser = useContext(CurrentUserContext)
   const handleResize = () => {
     setWindowSize(window.innerWidth)
   }
@@ -37,8 +38,8 @@ export default function Header(props) {
           <img className='header__logo' src={logo} alt='Логотип сервиса drow-films' />
         </Link>
       </nav>
-      {props.main && windowSize > 768 && props.isLogged && <Navigation mainMovies={props.mainMovies} mainSaved={props.mainSaved} profile={props.profile} />}
-      {props.landing && props.isLogged && (
+      {props.main && windowSize > 768 && currentUser.isLogged && <Navigation landing={props.landing} mainMovies={props.mainMovies} mainSaved={props.mainSaved} profile={props.profile} />}
+      {!currentUser.isLogged && (
         <nav className='header__container'>
           <Link to='/signup' className='header__link-register'>
             Регистрация

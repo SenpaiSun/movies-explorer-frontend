@@ -8,9 +8,6 @@
   align-items: center;
 }
 
-.header-main {
-  background-color: #202020;
-}
 
 @media screen and (max-width: 768px) {
   .header-main {
@@ -48,6 +45,10 @@
   gap: 30px;
   align-items: center;
   justify-content: center;
+}
+
+.header__container-logo-active {
+
 }
 
 @media screen and (max-width:768px) {

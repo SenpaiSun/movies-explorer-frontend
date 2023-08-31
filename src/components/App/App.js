@@ -12,9 +12,11 @@ import { savedCard } from '../../utils/savedCard'
 import moviesApiCards from '../../utils/MoviesApi'
 import { apiBeatfilm } from '../../utils/MainApi'
 import ProtectedRouteElement from '../ProtectedRoute/ProtectedRoute'
+import { CurrentUserContext } from '../CurrentUserContext/CurrentUserContext'
 
 function App() {
   const navigate = useNavigate();
+  const [currentUser, setCurrentUser] = useState(null)
   const [getCards, setGetCards] = useState([])
   const [saveBaseCards, setSaveBaseCards] = useState([])
   const [isCheckedShorts, setIsCheckedShorts] = useState(localStorage.getItem('isCheckedShorts') === 'true')
@@ -25,6 +27,23 @@ function App() {
     setIsCheckedShorts(!isCheckedShorts)
     localStorage.setItem('isCheckedShorts', !isCheckedShorts)
   }
+
+  const tokenCheck = () => {
+    const token = localStorage.getItem('token')
+    if(token) {
+      apiBeatfilm.checkToken(token)
+      .then((res) => {
+        if(res) {
+          setCurrentUser({name:res.name, email: res.email})
+          setIsLogged(true)
+        }
+      })
+    }
+  }
+
+  useEffect(() => {
+    tokenCheck()
+  }, [])
 
   useEffect(() => {
     localStorage.setItem('isCheckedShorts', isCheckedShorts)
@@ -83,15 +102,16 @@ function App() {
   }
 
   return (
-    <div className='root'>
+    <CurrentUserContext.Provider value={{isLogged, currentUser}}>
+      <div className='root'>
       <Routes>
-        <Route path='/' element={<Main landing={true} isLogged={isLogged} />} />
+        <Route path='/' element={<Main main={true} landing={true} isLogged={isLogged} />} />
 
         <Route path='/movies' element={<ProtectedRouteElement component={Movies} main={true} mainMovies={true} getCards={getCards} getCardsByName={getCardsByName} handleToggle={handleToggle} isCheckedShorts={isCheckedShorts} isLogged ={isLogged}/>} />
 
         <Route path='/saved-movies' element={<ProtectedRouteElement component={SavedMovies} cardData={arrayCard} handleDelete={handleDeleteCard} main={true} mainSaved={true} isLogged ={isLogged}/>} />
 
-        <Route path='/profile' element={<ProtectedRouteElement component={Profile} main={true} profile={true} isLogged ={isLogged}/>} />
+        <Route path='/profile' element={<ProtectedRouteElement component={Profile} main={true} profile={true} isLogged ={isLogged} userData={currentUser}/>} />
 
         <Route path='/signup' element={<Register toRegister={true} title='Добро пожаловать!' buttonText='Зарегистрироваться' textRedirect='Уже зарегистрированы?' textLink='Войти' toRegisterApi={register} />} />
 
@@ -100,6 +120,7 @@ function App() {
         <Route path='*' element={<NotFound />} />
       </Routes>
     </div>
+    </CurrentUserContext.Provider>
   )
 }
 

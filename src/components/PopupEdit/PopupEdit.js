@@ -1,8 +1,20 @@
-import { React, useState } from 'react'
+import { React, useContext, useState } from 'react'
 import './PopupEdit.css'
+import { CurrentUserContext } from '../CurrentUserContext/CurrentUserContext'
 
-export default function PopupEdit() {
+export default function PopupEdit(props) {
+  const currentUser = useContext(CurrentUserContext)
   const [isStateInput, setIsStateInput] = useState(true)
+  const [isName, setIsName] = useState(currentUser.currentUser.name)
+  const [isEmail, setIsEmail] = useState(currentUser.currentUser.email)
+
+  function handleChangeName(event) {
+    setIsName(event.target.value)
+  }
+
+  function handleChangeEmail(event) {
+    setIsEmail(event.target.value)
+  }
 
   const handleForm = (event) => {
     event.preventDefault()
@@ -31,11 +43,11 @@ export default function PopupEdit() {
       <form className='popup-edit__container' onSubmit={handleForm}>
         <div className='popup-edit__container-mini'>
           <p className={isStateInput ?'popup-edit__text' : 'popup-edit__text popup-edit__text-active'}>Имя</p>
-          <input className='popup-edit__input popup-edit__input-checked' type='text' placeholder='Иван' minLength="2" maxLength="30" disabled={isStateInput} required/>
+          <input className='popup-edit__input popup-edit__input-checked' type='text' placeholder='Иван' minLength="2" maxLength="30" disabled={isStateInput} value={isName} required onChange={handleChangeName}/>
         </div>
         <div className='popup-edit__container-mini'>
           <p className={isStateInput ?'popup-edit__text' : 'popup-edit__text popup-edit__text-active'}>E-mail</p>
-          <input className='popup-edit__input' type='email' required disabled={isStateInput} placeholder='pochta@yandex.ru'/>
+          <input className='popup-edit__input' type='email' required disabled={isStateInput} placeholder='pochta@yandex.ru' value={isEmail} onChange={handleChangeEmail}/>
         </div>
         {isStateInput ? (
           <div className='popup-edit__button-container'>
