@@ -32,7 +32,7 @@ export default function Header(props) {
   }
 
   return (
-    <header className={props.landing ? 'header' : 'header header-main'}>
+    <header className={props.landing ? 'header' : 'header header-main header-active'}>
       <nav className='header__container-logo'>
         <Link to='/'>
           <img className='header__logo' src={logo} alt='Логотип сервиса drow-films' />

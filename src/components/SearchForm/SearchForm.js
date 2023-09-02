@@ -5,6 +5,7 @@ import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 
 export default function SearchForm(props) {
   const [windowSize, setWindowSize] = useState(window.innerWidth)
+  const [inputValue, setInputValue] = useState('')
 
   const handleResize = () => {
     setWindowSize(window.innerWidth)
@@ -19,7 +20,6 @@ export default function SearchForm(props) {
 
   function handleSearchCard(event) {
     event.preventDefault()
-    const inputValue = document.querySelector('.search-form__input').value
     const errorValidation = document.querySelector('.search-form__error')
     if(inputValue.length > 0){
       errorValidation.classList.remove('search-form__error-active')
@@ -29,17 +29,21 @@ export default function SearchForm(props) {
     }
   }
 
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value)
+  }
+
   return (
     <section className="search-form">
-      <form className="search-form__container">
+      <form className="search-form__container" onSubmit={handleSearchCard} noValidate>
         <div className='search-form__settings-input'>
           {windowSize > 690 && <img className="search-form__logo" src={searchLogo} alt="Иконка лупы"></img>}
-          <input className="search-form__input" placeholder="Фильм" type='search' required/>
-          <button className="search-form__button-search" type="submit" onClick={handleSearchCard}>Найти</button>
+          <input className="search-form__input" placeholder="Фильм" type='search' required value={inputValue} onChange={handleInputChange}/>
+          <button className="search-form__button-search" type="submit">Найти</button>
         </div>
         <div className='search-form__settings-toggle'>
           <div className="search-form__button-short">
-            <FilterCheckbox handleToggle={props.handleToggle} isCheckedShorts={props.isCheckedShorts}/>
+            <FilterCheckbox handleToggle={props.handleToggle} isCheckedShorts={props.isCheckedShorts} getCardsByName={props.getCardsByName} getCardsByShorts={props.getCardsByShorts} inputValue={inputValue}/>
           </div>
           <p className="search-form__shortfilms">Короткометражки</p>
         </div>

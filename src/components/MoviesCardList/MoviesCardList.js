@@ -1,9 +1,12 @@
 import './MoviesCardList.css'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import MoviesCard from '../MoviesCard/MoviesCard'
+import { CurrentUserContext } from '../CurrentUserContext/CurrentUserContext'
+import Preloader from '../Preloader/Preloader'
 
 export default function MoviesCardList(props) {
 
+  const CurrentUser = useContext(CurrentUserContext)
   const [windowSize, setWindowSize] = useState(window.innerWidth)
 
   const handleResize = () => {
@@ -29,7 +32,7 @@ export default function MoviesCardList(props) {
     cardAmount = 20
   }
 
-  const cards = props.getCards
+  const cards = props.films
 
   const [cardVisible, setCardVisible] = React.useState(cardAmount)
 
@@ -50,7 +53,7 @@ export default function MoviesCardList(props) {
       <div className={ cards.length !== 0 ? 'movies__container' : 'movies__container movies__container-not-found'}>
         {cards.length !== 0 ? (cards.slice(0, cardVisible).map((el) => (
           <MoviesCard handleDelete = {props.handleDelete} mainSaved={props.mainSaved} main={props.main} key={el.id} card={el} />
-        ))) : <p className='movies__not-found-card'>Похоже, ничего не найдено..</p>}
+        ))) : ( CurrentUser.isLoading ? <Preloader/> : (props.stateSubmit ? <p className='movies__not-found-card'>Похоже, ничего не найдено..</p> : ''))}
       </div>
       <div className='movies__load'>
         {!amountCard && (

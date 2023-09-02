@@ -7,9 +7,9 @@ export default function Profiler(props) {
   return (
     props.userData ? (
       <>
-      <Header main={true} profile={props.profile}/>
+      <Header main={true} profile={true}/>
       <main>
-        <PopupEdit userData={props.userData}/>
+        <PopupEdit userData={props.userData} tokenRemove={props.tokenRemove}/>
       </main>
     </>
     ) : <Preloader/>

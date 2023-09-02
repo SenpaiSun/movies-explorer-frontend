@@ -14,6 +14,23 @@ export default function MoviesCard(props) {
     props.handleDelete(cardData._id)
   }
 
+  function formatDuration(minutes) {
+    const hours = Math.floor(minutes / 60);
+    const remainingMinutes = minutes % 60;
+
+    let result = '';
+
+    if (hours > 0) {
+      result += `${hours}ч `;
+    }
+
+    if (remainingMinutes > 0) {
+      result += `${remainingMinutes}мин`;
+    }
+
+    return result;
+  }
+
   return (
     <li className="card">
       <a href={cardData.trailerLink} target='_blank' rel='noreferrer' className="card__link">
@@ -23,7 +40,7 @@ export default function MoviesCard(props) {
         <h2 className="card__title-name">{cardData.nameRU}</h2>
         <button type='button' className={props.main ? (!isLike ? 'card__title-like' : 'card__title-like card__title-like-active') : 'card__title-like card__title-like-delete'} onClick={props.main ? clickLike : clickDelete}/>
       </div>
-      <p className="card__duration">{cardData.duration}</p>
+      <p className="card__duration">{formatDuration(cardData.duration)}</p>
     </li>
   )
 }

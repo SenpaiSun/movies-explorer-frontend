@@ -8,6 +8,15 @@
   align-items: center;
 }
 
+.header-active {
+  background-color: #202020;
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    align-items: start;
+  }
+}
 
 @media screen and (max-width: 768px) {
   .header-main {

@@ -54,7 +54,7 @@ export default function PopupEdit(props) {
             <button className='popup-edit__button-edit' type='button' onClick={editButton}>
               Редактировать
             </button>
-            <button className='popup-edit__button-exit' type='button' onClick={goBack}>Выйти из аккаунта</button>
+            <button className='popup-edit__button-exit' type='button' onClick={props.tokenRemove}>Выйти из аккаунта</button>
           </div>
         ) : (
           <>

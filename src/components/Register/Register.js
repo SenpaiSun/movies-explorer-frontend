@@ -4,7 +4,7 @@ import PopupSign from '../PopupSign/PopupSign'
 export default function Register(props) {
   return (
     <main>
-      <PopupSign title={props.title} buttonText={props.buttonText} textRedirect={props.textRedirect} textLink={props.textLink} toRegister={props.toRegister} toRegisterApi={props.toRegisterApi}/>
+      <PopupSign toRegister={true} title='Добро пожаловать!' buttonText='Зарегистрироваться' textRedirect='Уже зарегистрированы?' textLink='Войти' toRegisterApi={props.toRegisterApi}/>
     </main>
   )
 }

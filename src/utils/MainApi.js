@@ -43,7 +43,18 @@ export class MainApi {
     .then((res) => this._checkedError(res))
   }
 
+  likeCard(dataCard) {
+    return fetch(`${this._url}/movies`, {
+      method: 'POST',
+      headers: this._headers,
+      body: JSON.stringify({
+        dataCard
+      })
+    })
+  }
+
 };
+
 
 
 export const apiBeatfilm = new MainApi({
