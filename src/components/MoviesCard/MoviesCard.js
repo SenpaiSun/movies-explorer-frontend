@@ -1,17 +1,54 @@
 import './MoviesCard.css'
-import React from "react";
+import React, { useContext, useEffect } from "react";
+import { CurrentUserContext } from '../CurrentUserContext/CurrentUserContext'
 
 export default function MoviesCard(props) {
-  const cardData = props.card
 
-  const [isLike, setIsLike] = React.useState(false)
+  const currentPath = window.location.pathname
+  const CurrentUser = useContext(CurrentUserContext)
+  const cardData = props.card
+  const image = `https://api.nomoreparties.co/${cardData.image.url}`
+
+  const savedCard = {
+    country: cardData.country || 'Неизвестно',
+    director: cardData.director,
+    duration: cardData.duration,
+    year: cardData.year,
+    description: cardData.description,
+    image: 'https://api.nomoreparties.co' + cardData.image.url,
+    trailerLink: cardData.trailerLink,
+    nameRU: cardData.nameRU,
+    nameEN: cardData.nameEN,
+    thumbnail: 'https://api.nomoreparties.co' + cardData.thumbnail,
+    movieId: cardData.id,
+    owner: CurrentUser.currentUser.id
+  }
+
+  console.log(cardData.id)
+
+  const [isLike, setIsLike] = React.useState(false);
+
+  useEffect(() => {
+    isLiked();
+  }, [CurrentUser.isSavedFilms]);
+
+  function isLiked(){
+    console.log(CurrentUser.searchFilmsSaved);
+    const liked = CurrentUser.isSavedFilms && CurrentUser.isSavedFilms.some(savedCard => savedCard.movieId === cardData.id);
+    setIsLike(liked);
+  }
 
   const clickLike = () => {
     setIsLike(!isLike)
+    if(!isLike) {
+      props.likeCard(savedCard);
+    } else {
+      props.handleDelete(cardData.id);
+    }
   }
 
   const clickDelete = () => {
-    props.handleDelete(cardData._id)
+    props.handleDelete(cardData.movieId)
   }
 
   function formatDuration(minutes) {
@@ -30,15 +67,18 @@ export default function MoviesCard(props) {
 
     return result;
   }
+  function handleLikeCard() {
+    clickLike()
+  }
 
   return (
     <li className="card">
       <a href={cardData.trailerLink} target='_blank' rel='noreferrer' className="card__link">
-        <img className="card__image" src={`https://api.nomoreparties.co/${cardData.image.url}`} alt={cardData.nameRU}/>
+        <img className="card__image" src={currentPath === '/movies' ? image : cardData.image} alt={cardData.nameRU}/>
       </a>
       <div className="card__title">
         <h2 className="card__title-name">{cardData.nameRU}</h2>
-        <button type='button' className={props.main ? (!isLike ? 'card__title-like' : 'card__title-like card__title-like-active') : 'card__title-like card__title-like-delete'} onClick={props.main ? clickLike : clickDelete}/>
+        <button type='button' className={props.main ? (!isLike ? 'card__title-like' : 'card__title-like card__title-like-active') : 'card__title-like card__title-like-delete'} onClick={currentPath === '/movies' ?  handleLikeCard : clickDelete}/>
       </div>
       <p className="card__duration">{formatDuration(cardData.duration)}</p>
     </li>

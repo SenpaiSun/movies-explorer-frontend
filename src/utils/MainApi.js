@@ -47,9 +47,21 @@ export class MainApi {
     return fetch(`${this._url}/movies`, {
       method: 'POST',
       headers: this._headers,
-      body: JSON.stringify({
-        dataCard
-      })
+      body: JSON.stringify(dataCard)
+    })
+  }
+
+  getSavedCard() {
+    return fetch(`${this._url}/movies`, {
+      method: 'GET',
+      headers: this._headers
+    })
+  }
+
+  deleteCard(id) {
+    return fetch(`${this._url}/movies/${id}`, {
+      method: 'DELETE',
+      headers: this._headers
     })
   }
 

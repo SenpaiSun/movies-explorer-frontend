@@ -5,9 +5,12 @@ import { CurrentUserContext } from '../CurrentUserContext/CurrentUserContext'
 import Preloader from '../Preloader/Preloader'
 
 export default function MoviesCardList(props) {
-
+  const currentPath = window.location.pathname
   const CurrentUser = useContext(CurrentUserContext)
   const [windowSize, setWindowSize] = useState(window.innerWidth)
+  const savedFilms = CurrentUser.searchFilmsSaved || []
+
+  const cards = props.films
 
   const handleResize = () => {
     setWindowSize(window.innerWidth)
@@ -22,6 +25,7 @@ export default function MoviesCardList(props) {
 
   let cardAmount
 
+if(currentPath === '/movies') {
   if(windowSize <= 480) {
     cardAmount = 5
   } else if (windowSize <= 768) {
@@ -31,8 +35,9 @@ export default function MoviesCardList(props) {
   } else {
     cardAmount = 20
   }
-
-  const cards = props.films
+} else {
+  cardAmount = Infinity;
+}
 
   const [cardVisible, setCardVisible] = React.useState(cardAmount)
 
@@ -46,21 +51,22 @@ export default function MoviesCardList(props) {
     }
   }
 
-  const amountCard = cardVisible >=cards.length
+  const amountCard = cardVisible >= (currentPath === '/movies' ? cards : savedFilms).length
+
 
   return (
     <section className='movies'>
-      <div className={ cards.length !== 0 ? 'movies__container' : 'movies__container movies__container-not-found'}>
-        {cards.length !== 0 ? (cards.slice(0, cardVisible).map((el) => (
-          <MoviesCard handleDelete = {props.handleDelete} mainSaved={props.mainSaved} main={props.main} key={el.id} card={el} />
+      <div className={ (props.main ? cards : savedFilms).length !== 0 ? 'movies__container' : 'movies__container movies__container-not-found'}>
+        {(props.films || savedFilms) && (props.main ? cards : savedFilms).length !== 0 ? ((props.main ? cards : savedFilms).slice(0, cardVisible).map((el) => (
+          <MoviesCard handleDelete = {props.handleDelete} mainSaved={props.mainSaved} main={props.main} key={el._id || el.id} card={el} likeCard={props.likeCard}/>
         ))) : ( CurrentUser.isLoading ? <Preloader/> : (props.stateSubmit ? <p className='movies__not-found-card'>Похоже, ничего не найдено..</p> : ''))}
       </div>
       <div className='movies__load'>
-        {!amountCard && (
+        {currentPath === '/movies' && (!amountCard && (
           <button className='movies__load-button' type='button' onClick={loadMore}>
             Еще
           </button>
-        )}
+        ))}
       </div>
     </section>
   )
