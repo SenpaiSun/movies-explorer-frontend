@@ -8,7 +8,11 @@ export class MainApi {
     if (res.ok) {
       return res.json()
     }
-    return Promise.reject(`Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз`)
+    return res.json().then(errorData => {
+      const error = new Error(errorData.message);
+      error.status = res.status;
+      return Promise.reject(error);
+    });
   }
 
   register(data) {
@@ -49,6 +53,7 @@ export class MainApi {
       headers: this._headers,
       body: JSON.stringify(dataCard)
     })
+    .then((res) => this._checkedError(res))
   }
 
   getSavedCard() {
@@ -56,6 +61,7 @@ export class MainApi {
       method: 'GET',
       headers: this._headers
     })
+    .then((res) => this._checkedError(res))
   }
 
   deleteCard(id) {
@@ -63,9 +69,21 @@ export class MainApi {
       method: 'DELETE',
       headers: this._headers
     })
-  }
+    .then((res) => this._checkedError(res))
+}
 
-};
+  updateProfile(data) {
+    return fetch(`${this._url}/users/me`, {
+      method: 'PATCH',
+      headers: this._headers,
+      body: JSON.stringify({
+        name: data.name,
+        email: data.email
+      })
+    })
+    .then((res) => this._checkedError(res))
+  };
+}
 
 
 

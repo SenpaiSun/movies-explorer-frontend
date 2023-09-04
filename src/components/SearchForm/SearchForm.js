@@ -16,6 +16,7 @@ export default function SearchForm(props) {
     setWindowSize(window.innerWidth)
   }
 
+  
   useEffect(() => {
     window.addEventListener('resize', handleResize)
     return () => {

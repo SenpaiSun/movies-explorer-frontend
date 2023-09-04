@@ -30,6 +30,10 @@ function App() {
   const [isLogged, setIsLogged] = useState(false)
   const [stateSubmit, setStateSubmit] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
+  const [isStateValidate, setIsStateValidate] = useState({
+    component: '',
+    code: '',
+  })
 
   // Переключение чекбокса короткометражек
   const handleToggle = () => {
@@ -81,13 +85,19 @@ function App() {
     }
   }, [isCheckedShorts, isCheckedShortsSaved])
 
+  // Сохранение фильмов в localstorage
+  useEffect(() => {
+    const filmsJSON = JSON.stringify(searchFilms);
+    const savedFilmsJSON = JSON.stringify(searchFilmsSaved);
+    localStorage.setItem('films', filmsJSON);
+    localStorage.setItem('savedFilms', savedFilmsJSON);
+  }, [searchFilms, searchFilmsSaved])
+
+
   // Получение сохраненных фильмов
   const getSavedCard = () => {
     apiBeatfilm
       .getSavedCard()
-      .then((res) => {
-        return res.json()
-      })
       .then((data) => {
         setIsSavedFilms(data)
         const filterCards = data.filter((card) => card.duration <= 40)
@@ -108,6 +118,8 @@ function App() {
   const getCardsByName = (value) => {
     setStateSubmit(true)
     if(currentPath === '/movies') {
+      console.log(getFilms)
+      console.log(getFilmsShorts)
       setSearchFilms(
         (!isCheckedShorts ? getFilms : getFilmsShorts).filter((card) => {
           return card.nameRU.toLowerCase().includes(value.toLowerCase()) || card.nameEN.toLowerCase().includes(value.toLowerCase())
@@ -143,27 +155,45 @@ function App() {
     }
   }
 
-  // Регистрация
-  const register = (data) => {
-    apiBeatfilm
-      .register(data)
-      .then((res) => {
-        navigate('/signin', { replace: true })
-        return res
-      })
-      .catch((err) => console.err)
-  }
-
   // Авторизация
   const login = (data) => {
     apiBeatfilm
       .login(data)
       .then((res) => {
+        setIsStateValidate({
+          component: 'login',
+          code: 200
+        })
         localStorage.setItem('token', `${res.token}`)
         setIsLogged(true)
         navigate('/movies', { replace: true })
+        console.log(isStateValidate)
       })
-      .catch((err) => console.err)
+      .catch((err) => {
+        setIsStateValidate({
+          component: 'login',
+          code: err.status
+        })
+      })
+  }
+
+  // Регистрация
+  const register = (data) => {
+    apiBeatfilm
+      .register(data)
+      .then((res) => {
+        setIsStateValidate({
+          component: 'register',
+          code: 200
+        })
+        login(data)
+      })
+      .catch((err) => {
+        setIsStateValidate({
+          component: 'register',
+          code: err.status
+        })
+      })
   }
 
   // Добавление карточки в сохраненные
@@ -189,8 +219,25 @@ function App() {
       .catch((err) => console.err)
   }
 
+  const updateProfile = (data) => {
+    return apiBeatfilm.updateProfile(data)
+    .then((res) => {
+      setIsStateValidate({
+        component: 'profile',
+        code: 200
+      })
+      return res
+    })
+    .catch((err) => {
+      setIsStateValidate({
+        component: 'profile',
+        code: err.status
+      })
+    })
+  }
+
   return (
-    <CurrentUserContext.Provider value={{ isLogged, currentUser, isCheckedShorts, isCheckedShortsSaved, isLoading, searchFilmsSaved, isSavedFilms}}>
+    <CurrentUserContext.Provider value={{ isLogged, currentUser, isCheckedShorts, isCheckedShortsSaved, isLoading, searchFilms, searchFilmsSaved, isSavedFilms, isStateValidate}}>
       <div className='root'>
         <Routes>
           <Route path='/' element={<Main main={true} landing={true} isLogged={isLogged} />} />
@@ -204,7 +251,6 @@ function App() {
                     component={Movies}
                     main={true}
                     mainMovies={true}
-                    films={searchFilms}
                     getCardsByName={getCardsByName}
                     getCardsByShorts={getCardsByShorts}
                     handleToggle={handleToggle}
@@ -219,7 +265,7 @@ function App() {
 
               <Route path='/saved-movies' element={<ProtectedRoute component={SavedMovies} handleDelete={deleteCard} isLogged={isLogged} isSavedFilms={isSavedFilms} getCardsByName={getCardsByName} getCardsByShorts={getCardsByShorts} handleToggle={handleToggle} />} />
 
-              <Route path='/profile' element={<ProtectedRoute component={Profile} isLogged={isLogged} userData={currentUser} tokenRemove={tokenRemove} />} />
+              <Route path='/profile' element={<ProtectedRoute component={Profile} isLogged={isLogged} userData={currentUser} tokenRemove={tokenRemove} updateProfile={updateProfile}/>} />
             </>
           )}
 

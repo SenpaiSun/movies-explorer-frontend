@@ -9,8 +9,7 @@ export default function MoviesCardList(props) {
   const CurrentUser = useContext(CurrentUserContext)
   const [windowSize, setWindowSize] = useState(window.innerWidth)
   const savedFilms = CurrentUser.searchFilmsSaved || []
-
-  const cards = props.films
+  const cards = CurrentUser.searchFilms || []
 
   const handleResize = () => {
     setWindowSize(window.innerWidth)

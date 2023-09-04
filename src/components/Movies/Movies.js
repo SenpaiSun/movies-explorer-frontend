@@ -12,7 +12,7 @@ export default function Movies(props) {
       <Header main={props.main} mainMovies={props.mainMovies}/>
       <main>
         <SearchForm getCardsByName={props.getCardsByName} handleToggle={props.handleToggle} isCheckedShorts={props.isCheckedShorts} getCardsByShorts={props.getCardsByShorts}/>
-        <MoviesCardList main={props.main} cardData={props.cardData} getCards={props.getCards} films={props.films} stateSubmit={props.stateSubmit} isCheckedShorts={props.isCheckedShorts} likeCard={props.likeCard} handleDelete={props.handleDelete}/>
+        <MoviesCardList main={props.main} cardData={props.cardData} getCards={props.getCards} stateSubmit={props.stateSubmit} isCheckedShorts={props.isCheckedShorts} likeCard={props.likeCard} handleDelete={props.handleDelete}/>
       </main>
       <Footer main={props.main}/>
     </>
