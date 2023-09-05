@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import Header from '../Header/Header'
 import SearchForm from '../SearchForm/SearchForm'
 import MoviesCardList from '../MoviesCardList/MoviesCardList'
 import Footer from '../Footer/Footer'
+import { CurrentUserContext } from '../CurrentUserContext/CurrentUserContext'
+
 
 export default function Movies(props) {
-
+  const CurrentUser = useContext(CurrentUserContext)
 
   return (
+    CurrentUser.isLogged && (
     <>
       <Header main={props.main} mainMovies={props.mainMovies}/>
       <main>
@@ -16,5 +19,6 @@ export default function Movies(props) {
       </main>
       <Footer main={props.main}/>
     </>
+    )
   )
 }

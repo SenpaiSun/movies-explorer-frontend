@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes, useNavigate } from 'react-router-dom'
+import { Route, Routes, useNavigate } from 'react-router-dom'
 import './App.css'
 import Main from '../Main/Main'
 import Movies from '../Movies/Movies'
@@ -8,12 +8,10 @@ import Register from '../Register/Register'
 import Login from '../Login/Login'
 import NotFound from '../NotFound/NotFound'
 import { useEffect, useState } from 'react'
-import { savedCard } from '../../utils/savedCard'
 import moviesApiCards from '../../utils/MoviesApi'
 import { apiBeatfilm } from '../../utils/MainApi'
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 import { CurrentUserContext } from '../CurrentUserContext/CurrentUserContext'
-import Preloader from '../Preloader/Preloader'
 
 function App() {
   const currentPath = window.location.pathname
@@ -71,7 +69,7 @@ function App() {
 
   // Удаление токена пользователя
   const tokenRemove = () => {
-    localStorage.removeItem('token')
+    localStorage.clear()
     setIsLogged(false)
     navigate('/', { replace: true })
   }
@@ -84,14 +82,6 @@ function App() {
       localStorage.setItem('isCheckedShortsSaved', isCheckedShortsSaved)
     }
   }, [isCheckedShorts, isCheckedShortsSaved])
-
-  // Сохранение фильмов в localstorage
-  useEffect(() => {
-    const filmsJSON = JSON.stringify(searchFilms);
-    const savedFilmsJSON = JSON.stringify(searchFilmsSaved);
-    localStorage.setItem('films', filmsJSON);
-    localStorage.setItem('savedFilms', savedFilmsJSON);
-  }, [searchFilms, searchFilmsSaved])
 
 
   // Получение сохраненных фильмов
@@ -108,7 +98,6 @@ function App() {
 
   // Получение при монтировании состояния токена, сохраненных фильмов, базовых фильмов
   useEffect(() => {
-    setIsLoading(true)
     tokenCheck()
     console.log(isLogged)
   }, [])
@@ -118,8 +107,6 @@ function App() {
   const getCardsByName = (value) => {
     setStateSubmit(true)
     if(currentPath === '/movies') {
-      console.log(getFilms)
-      console.log(getFilmsShorts)
       setSearchFilms(
         (!isCheckedShorts ? getFilms : getFilmsShorts).filter((card) => {
           return card.nameRU.toLowerCase().includes(value.toLowerCase()) || card.nameEN.toLowerCase().includes(value.toLowerCase())
@@ -241,8 +228,6 @@ function App() {
       <div className='root'>
         <Routes>
           <Route path='/' element={<Main main={true} landing={true} isLogged={isLogged} />} />
-
-          {(isLogged && !isLoading) && (
             <>
               <Route
                 path='/movies'
@@ -267,7 +252,6 @@ function App() {
 
               <Route path='/profile' element={<ProtectedRoute component={Profile} isLogged={isLogged} userData={currentUser} tokenRemove={tokenRemove} updateProfile={updateProfile}/>} />
             </>
-          )}
 
           <Route path='/signup' element={<Register toRegisterApi={register} />} />
 

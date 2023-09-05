@@ -2,7 +2,6 @@ import './SearchForm.css'
 import React, { useEffect, useState } from 'react'
 import searchLogo from '../../images/icon.svg'
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox'
-import { useSearchParams, useNavigate } from 'react-router-dom'
 
 export default function SearchForm(props) {
   const [windowSize, setWindowSize] = useState(window.innerWidth)
@@ -16,7 +15,7 @@ export default function SearchForm(props) {
     setWindowSize(window.innerWidth)
   }
 
-  
+
   useEffect(() => {
     window.addEventListener('resize', handleResize)
     return () => {

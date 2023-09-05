@@ -24,7 +24,6 @@ export default function MoviesCard(props) {
     owner: CurrentUser.currentUser.id
   }
 
-  console.log(cardData.id)
 
   const [isLike, setIsLike] = React.useState(false);
 
@@ -33,7 +32,6 @@ export default function MoviesCard(props) {
   }, [CurrentUser.isSavedFilms]);
 
   function isLiked(){
-    console.log(CurrentUser.searchFilmsSaved);
     const liked = CurrentUser.isSavedFilms && CurrentUser.isSavedFilms.some(savedCard => savedCard.movieId === cardData.id);
     setIsLike(liked);
   }

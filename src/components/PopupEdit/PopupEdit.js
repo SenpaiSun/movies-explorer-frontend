@@ -26,15 +26,6 @@ export default function PopupEdit(props) {
     setIsStateInput(!isStateInput)
   }
 
-  const editButtonSave = () => {
-    const nameInput = document.querySelector('.popup-edit__input-checked');
-    if(nameInput.value.length >= 2 && nameInput.value.length <= 30) {
-      setIsStateInput(!isStateInput)
-    } else {
-      return
-    }
-  }
-
   const editButtonCancel = () => {
       setIsStateInput(!isStateInput)
       setIsName(currentUser.currentUser.name);
