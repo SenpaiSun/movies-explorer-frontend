@@ -1,5 +1,5 @@
 import './FilterCheckbox.css'
-import React, { useContext} from 'react'
+import React, { useContext, useEffect} from 'react'
 import { CurrentUserContext } from '../CurrentUserContext/CurrentUserContext'
 
 export default function FilterCheckbox(props) {
@@ -9,6 +9,7 @@ export default function FilterCheckbox(props) {
   function handleGetCards() {
       props.getCardsByShorts(props.inputValue, (currentPath === '/movies' ? CurrentUser.isCheckedShorts : CurrentUser.isCheckedShortsSaved));
   }
+  
 
   return (
     <label className="toggle-shorts">

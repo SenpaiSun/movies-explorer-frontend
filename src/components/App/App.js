@@ -1,4 +1,4 @@
-import { Route, Routes, useNavigate } from 'react-router-dom'
+import { Navigate, Route, Routes, useNavigate } from 'react-router-dom'
 import './App.css'
 import Main from '../Main/Main'
 import Movies from '../Movies/Movies'
@@ -47,14 +47,15 @@ function App() {
   // Проверка токена пользователя
   const tokenCheck = () => {
     const token = localStorage.getItem('token')
+    console.log(`${token} fuck 1`)
     if (token) {
       apiBeatfilm.checkToken(token).then((res) => {
+        getSavedCard()
         setIsLogged(true)
         if (res) {
           setCurrentUser({ name: res.name, email: res.email, id: res._id })
         }
       })
-      getSavedCard()
     moviesApiCards
       .getBaseCards()
       .then((res) => {
@@ -64,6 +65,8 @@ function App() {
       })
       .catch(console.error)
     setIsLoading(false)
+    } else {
+      console.log(`${token} fuck 2`)
     }
   }
 
@@ -89,9 +92,11 @@ function App() {
     apiBeatfilm
       .getSavedCard()
       .then((data) => {
+        console.log(data)
         setIsSavedFilms(data)
         const filterCards = data.filter((card) => card.duration <= 40)
         setIsSavedFilmsShorts(filterCards)
+        console.log(isSavedFilms)
       })
       .catch((err) => console.err)
   }
@@ -99,7 +104,6 @@ function App() {
   // Получение при монтировании состояния токена, сохраненных фильмов, базовых фильмов
   useEffect(() => {
     tokenCheck()
-    console.log(isLogged)
   }, [])
 
 
@@ -107,6 +111,8 @@ function App() {
   const getCardsByName = (value) => {
     setStateSubmit(true)
     if(currentPath === '/movies') {
+      console.log(getFilms)
+      console.log(getFilmsShorts)
       setSearchFilms(
         (!isCheckedShorts ? getFilms : getFilmsShorts).filter((card) => {
           return card.nameRU.toLowerCase().includes(value.toLowerCase()) || card.nameEN.toLowerCase().includes(value.toLowerCase())
@@ -154,13 +160,17 @@ function App() {
         localStorage.setItem('token', `${res.token}`)
         setIsLogged(true)
         navigate('/movies', { replace: true })
-        console.log(isStateValidate)
+        window.location.reload()
+        tokenCheck();
       })
       .catch((err) => {
         setIsStateValidate({
           component: 'login',
           code: err.status
         })
+      })
+      .finally((res) => {
+        console.log(localStorage.getItem('token'))
       })
   }
 
@@ -173,6 +183,8 @@ function App() {
           component: 'register',
           code: 200
         })
+      })
+      .then((res) => {
         login(data)
       })
       .catch((err) => {
@@ -195,12 +207,13 @@ function App() {
   }
 
   const deleteCard = (id) => {
-    console.log(id)
     apiBeatfilm
       .deleteCard(id)
       .then((res) => {
         const updateArrayCard = searchFilmsSaved.filter((card) => card.movieId !== id)
+        console.log(updateArrayCard)
         setSearchFilmsSaved(updateArrayCard)
+        getSavedCard()
         return res
       })
       .catch((err) => console.err)
@@ -228,7 +241,7 @@ function App() {
       <div className='root'>
         <Routes>
           <Route path='/' element={<Main main={true} landing={true} isLogged={isLogged} />} />
-            <>
+          <>
               <Route
                 path='/movies'
                 element={
@@ -253,9 +266,9 @@ function App() {
               <Route path='/profile' element={<ProtectedRoute component={Profile} isLogged={isLogged} userData={currentUser} tokenRemove={tokenRemove} updateProfile={updateProfile}/>} />
             </>
 
-          <Route path='/signup' element={<Register toRegisterApi={register} />} />
+          <Route path='/signup' element={!isLogged ? (<Register toRegisterApi={register}/>) : (<Navigate to='/' replace={true}/>)} />
 
-          <Route path='/signin' element={<Login toLoginApi={login} />} />
+          <Route path='/signin' element={!isLogged ? (<Login toLoginApi={login} />) : (<Navigate to='/' replace={true}/>)} />
 
           <Route path='*' element={<NotFound />} />
         </Routes>

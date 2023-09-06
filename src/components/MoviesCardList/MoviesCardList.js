@@ -11,9 +11,11 @@ export default function MoviesCardList(props) {
   const [savedFilms, setSavedFilms] = useState(CurrentUser.searchFilmsSaved || [])
   const [cards, setCards] = useState(CurrentUser.searchFilms || [])
   const [stateLocalstorage, isStateLocalstorage] = useState(false)
-  console.log(CurrentUser.CurrentUser)
 
-
+  useEffect(() => {
+    console.log(JSON.parse(localStorage.getItem('savedFilms')))
+    setSavedFilms(JSON.parse(localStorage.getItem('savedFilms')))
+  }, [])
 
   const handleResize = () => {
     setWindowSize(window.innerWidth)

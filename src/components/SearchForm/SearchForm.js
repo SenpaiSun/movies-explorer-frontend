@@ -1,16 +1,18 @@
 import './SearchForm.css'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import searchLogo from '../../images/icon.svg'
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox'
 
+
+
 export default function SearchForm(props) {
+
   const [windowSize, setWindowSize] = useState(window.innerWidth)
   const [inputValue, setInputValue] = useState(() => {
     const currentRoute = window.location.pathname
     const savedInputValues = JSON.parse(localStorage.getItem('inputValues')) || {}
     return savedInputValues[currentRoute] || ''
   })
-
   const handleResize = () => {
     setWindowSize(window.innerWidth)
   }
@@ -22,6 +24,8 @@ export default function SearchForm(props) {
       window.removeEventListener('resize', handleResize)
     }
   }, [])
+
+
 
   function handleSearchCard(event) {
     const currentRoute = window.location.pathname
