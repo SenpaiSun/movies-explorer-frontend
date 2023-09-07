@@ -12,6 +12,7 @@ export default function PopupSign(props) {
   const [errorTextPassword, setErrorTextPassword] = useState('')
   const [errorTextEmail, setErrorTextEmail] = useState('')
   const [errorTextName, setErrorTextName] = useState('')
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   const location = useLocation()
 
   useEffect(() => {
@@ -27,6 +28,8 @@ export default function PopupSign(props) {
       document.querySelector('.main-register__error-password').classList.add('main-register__error-active');
       if (currentUser.isStateValidate.code === 401) {
         setErrorTextPassword('Неверный логин или пароль');
+      } else if (currentUser.isStateValidate.code === 409) {
+        setErrorTextPassword('Такой email уже зарегистрирован!');
       } else {
         setErrorTextPassword('Произошла ошибка, обновите страницу');
       }
@@ -71,6 +74,33 @@ export default function PopupSign(props) {
     const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
     return emailRegex.test(email);
   }
+
+  useEffect(() => {
+    if(isName.length < 2 && location.pathname === '/signup') {
+      setIsButtonDisabled(true)
+      document.querySelector('.main-register__error-email').classList.remove('main-register__error-active');
+      document.querySelector('.main-register__error-password').classList.remove('main-register__error-active');
+      document.querySelector('.main-register__error-name').classList.add('main-register__error-active');
+      setErrorTextName('Имя должно содержать минимум 2 буквы!')
+    } else if(!isValidEmail(isEmail)){
+      setIsButtonDisabled(true)
+      document.querySelector('.main-register__error-password').classList.remove('main-register__error-active');
+      location.pathname === '/signup' && document.querySelector('.main-register__error-name').classList.remove('main-register__error-active');
+      document.querySelector('.main-register__error-email').classList.add('main-register__error-active');
+      setErrorTextEmail('Введите корректный email')
+    } else if(isPassword.length < 6){
+      setIsButtonDisabled(true)
+      document.querySelector('.main-register__error-email').classList.remove('main-register__error-active');
+      location.pathname === '/signup' && document.querySelector('.main-register__error-name').classList.remove('main-register__error-active');
+      document.querySelector('.main-register__error-password').classList.add('main-register__error-active');
+      setErrorTextPassword('Пароль должен содержать минимум 6 символов!')
+    } else {
+      document.querySelector('.main-register__error-password').classList.remove('main-register__error-active');
+      location.pathname === '/signup' && document.querySelector('.main-register__error-name').classList.remove('main-register__error-active');
+      document.querySelector('.main-register__error-email').classList.remove('main-register__error-active');
+      setIsButtonDisabled(false)
+    }
+  }, [isName, isEmail, isPassword]);
 
   function handleRegister(event) {
     event.preventDefault()
@@ -145,7 +175,7 @@ export default function PopupSign(props) {
           <p className='main-register__error main-register__error-password'>{errorTextPassword}</p>
         </span>
         <div className='main-register__container-button'>
-          <button type='submit' className={props.toRegister ? 'main-register__button-register main-register__button-register-margin' : 'main-register__button-register main-register__button-login'}>
+          <button type='submit' disabled={isButtonDisabled} className={props.toRegister ? `main-register__button-register main-register__button-register-margin ${isButtonDisabled ? 'main-register__button-register-disabled' : ''}` : `main-register__button-register main-register__button-login ${isButtonDisabled ? 'main-register__button-register-disabled' : ''}`} >
             {props.buttonText}
           </button>
           <div className='main-register__container-link'>

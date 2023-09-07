@@ -2,17 +2,17 @@ import './SearchForm.css'
 import React, { useContext, useEffect, useState } from 'react'
 import searchLogo from '../../images/icon.svg'
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox'
-
+import { CurrentUserContext } from '../CurrentUserContext/CurrentUserContext'
 
 
 export default function SearchForm(props) {
-
   const [windowSize, setWindowSize] = useState(window.innerWidth)
   const [inputValue, setInputValue] = useState(() => {
     const currentRoute = window.location.pathname
     const savedInputValues = JSON.parse(localStorage.getItem('inputValues')) || {}
     return savedInputValues[currentRoute] || ''
   })
+
   const handleResize = () => {
     setWindowSize(window.innerWidth)
   }

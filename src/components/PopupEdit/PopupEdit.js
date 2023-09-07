@@ -9,6 +9,7 @@ export default function PopupEdit(props) {
   const [isEmail, setIsEmail] = useState(currentUser.currentUser.email)
   const [errorText, setErrorText] = useState('')
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+  const [correctUpdate, setCorrectUpdate] = useState(false)
 
   function handleChangeName(event) {
     setIsName(event.target.value)
@@ -36,6 +37,10 @@ export default function PopupEdit(props) {
     console.log(currentUser.isStateValidate.code)
     if (currentUser.isStateValidate.code === 200 && currentUser.isStateValidate.component === 'profile') {
       setIsStateInput(!isStateInput);
+      setCorrectUpdate(true)
+      setTimeout(() => {
+        setCorrectUpdate(false)
+      }, 3000)
     } else if (currentUser.isStateValidate.code !== 200 && currentUser.isStateValidate.component === 'profile') {
       document.querySelector('.popup-edit__button-error').classList.add('popup-edit__button-error-active');
       if (currentUser.isStateValidate.code === 409) {
@@ -70,7 +75,7 @@ export default function PopupEdit(props) {
 
   return (
     <section className='popup-edit'>
-      <h1 className='popup-edit__title'>Привет, Нейм!</h1>
+      <h1 className={correctUpdate ? 'popup-edit__title popup-edit__title-active' : 'popup-edit__title'}>{correctUpdate ? 'Данные успешно изменены' : `Привет, ${isName}`}!</h1>
       <form className='popup-edit__container' onSubmit={handleForm} noValidate>
         <div className='popup-edit__container-mini'>
           <p className={isStateInput ?'popup-edit__text' : 'popup-edit__text popup-edit__text-active'}>Имя</p>

@@ -32,6 +32,7 @@ function App() {
     component: '',
     code: '',
   })
+  const [inputValueFilms, setInputValueFilms] = useState('')
 
   // Переключение чекбокса короткометражек
   const handleToggle = () => {
@@ -47,28 +48,35 @@ function App() {
   // Проверка токена пользователя
   const tokenCheck = () => {
     const token = localStorage.getItem('token')
-    console.log(`${token} fuck 1`)
     if (token) {
       apiBeatfilm.checkToken(token).then((res) => {
-        getSavedCard()
         setIsLogged(true)
         if (res) {
           setCurrentUser({ name: res.name, email: res.email, id: res._id })
         }
       })
-    moviesApiCards
-      .getBaseCards()
-      .then((res) => {
-        setGetFilms(res)
-        const filterCards = res.filter((card) => card.duration <= 40)
-        setGetFilmsShorts(filterCards)
-      })
-      .catch(console.error)
-    setIsLoading(false)
-    } else {
-      console.log(`${token} fuck 2`)
     }
   }
+
+
+  const getFilmsApi = async () => {
+    try {
+      const res = await moviesApiCards.getBaseCards();
+
+      setGetFilms(res);
+      const filterCards = res.filter((card) => card.duration <= 40);
+      setGetFilmsShorts(filterCards);
+
+      console.log('должен первым');
+    } catch (error) {
+      console.error('Ошибка при выполнении getFilmsApi:', error);
+    }
+    setIsLoading(false);
+  }
+
+  useEffect(() => {
+    console.log(searchFilms)
+  }, [searchFilms])
 
   // Удаление токена пользователя
   const tokenRemove = () => {
@@ -104,20 +112,33 @@ function App() {
   // Получение при монтировании состояния токена, сохраненных фильмов, базовых фильмов
   useEffect(() => {
     tokenCheck()
+    if(currentPath === '/saved-movies') {
+      getSavedCard()
+    }
   }, [])
+
+  useEffect(() => {
+    setSearchFilms(
+      (!isCheckedShorts ? getFilms : getFilmsShorts).filter((card) => {
+        return card.nameRU.toLowerCase().includes(inputValueFilms.toLowerCase()) || card.nameEN.toLowerCase().includes(inputValueFilms.toLowerCase())
+      })
+    )
+  }, [getFilms])
 
 
   // Поиск карточек по имени
-  const getCardsByName = (value) => {
+  const getCardsByName = async (value) => {
+    setIsLoading(true)
     setStateSubmit(true)
     if(currentPath === '/movies') {
-      console.log(getFilms)
-      console.log(getFilmsShorts)
+      setInputValueFilms(value)
+      await getFilmsApi()
       setSearchFilms(
         (!isCheckedShorts ? getFilms : getFilmsShorts).filter((card) => {
-          return card.nameRU.toLowerCase().includes(value.toLowerCase()) || card.nameEN.toLowerCase().includes(value.toLowerCase())
+          return card.nameRU.toLowerCase().includes(inputValueFilms.toLowerCase()) || card.nameEN.toLowerCase().includes(inputValueFilms.toLowerCase())
         })
       )
+      setIsLoading(false)
     }
     if(currentPath === '/saved-movies') {
       setSearchFilmsSaved(
@@ -125,12 +146,16 @@ function App() {
           return card.nameRU.toLowerCase().includes(value.toLowerCase()) || card.nameEN.toLowerCase().includes(value.toLowerCase())
         })
       )
+      setIsLoading(false)
     }
   }
 
+
   // Поиск карточек по состоянию чекбокса короткометражек
   const getCardsByShorts = (value, state) => {
-    console.log(searchFilms)
+    setInputValueFilms(value)
+    getFilmsApi()
+    console.log(value)
     setStateSubmit(true)
     if(currentPath === '/movies') {
       setSearchFilms(
@@ -237,7 +262,7 @@ function App() {
   }
 
   return (
-    <CurrentUserContext.Provider value={{ isLogged, currentUser, isCheckedShorts, isCheckedShortsSaved, isLoading, searchFilms, searchFilmsSaved, isSavedFilms, isStateValidate}}>
+    <CurrentUserContext.Provider value={{ getFilms, getFilmsShorts, isLogged, currentUser, isCheckedShorts, isCheckedShortsSaved, isLoading, searchFilms, searchFilmsSaved, isSavedFilms, isStateValidate}}>
       <div className='root'>
         <Routes>
           <Route path='/' element={<Main main={true} landing={true} isLogged={isLogged} />} />

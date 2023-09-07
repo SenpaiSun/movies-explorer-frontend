@@ -8,8 +8,10 @@ export default function FilterCheckbox(props) {
 
   function handleGetCards() {
       props.getCardsByShorts(props.inputValue, (currentPath === '/movies' ? CurrentUser.isCheckedShorts : CurrentUser.isCheckedShortsSaved));
+      const errorValidation = document.querySelector('.search-form__error')
+      errorValidation.classList.remove('search-form__error-active')
   }
-  
+
 
   return (
     <label className="toggle-shorts">
