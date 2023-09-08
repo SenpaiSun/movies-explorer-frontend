@@ -11,19 +11,37 @@ export default function MoviesCardList(props) {
   const [savedFilms, setSavedFilms] = useState(CurrentUser.isSavedFilms)
   const [cards, setCards] = useState(CurrentUser.searchFilms)
   const [stateLocalstorage, isStateLocalstorage] = useState(false)
+  const [stateFilms, isStateFilms] = useState(false)
 
+  useEffect(() => {
+    isStateFilms(true)
+  }, [cards])
+
+  useEffect(() => {
+    setSavedFilms(CurrentUser.searchFilmsSaved)
+  }, [CurrentUser.searchFilmsSaved])
 
   useEffect(() => {
     setCards(CurrentUser.searchFilms)
   }, [CurrentUser.searchFilms])
 
+  useEffect(() => {
+    if(currentPath === '/saved-movies') {
+      props.getSavedCard()
+      const filmsJSON = localStorage.getItem('films-saved');
+      setSavedFilms(JSON.parse(filmsJSON))
+    }
+    if(localStorage.getItem('films')) {
+      const filmsJSON = localStorage.getItem('films');
+      setCards(JSON.parse(filmsJSON))
+    }
+  }, [])
 
   const handleResize = () => {
     setWindowSize(window.innerWidth)
   }
 
   useEffect(() => {
-    setCards(JSON.parse(localStorage.getItem('films')))
     window.addEventListener('resize', handleResize)
     return () => {
       window.removeEventListener('resize', handleResize)
@@ -36,9 +54,7 @@ export default function MoviesCardList(props) {
       const filmsJSON = JSON.stringify(CurrentUser.searchFilms);
       localStorage.setItem('films', filmsJSON);
     }
-    if(CurrentUser.searchFilmsSaved.length !== 0) {
-      setSavedFilms(CurrentUser.searchFilmsSaved || [])
-    } else if (CurrentUser.searchFilms.length !== 0) {
+    if (CurrentUser.searchFilms.length !== 0) {
       setCards(CurrentUser.searchFilms || [])
     }
 
@@ -48,7 +64,6 @@ export default function MoviesCardList(props) {
   let cardAmount
 
   useEffect(() => {
-    console.log('asdasd')
     if(currentPath === '/movies') {
       if(windowSize <= 712) {
         cardAmount = 5
@@ -101,13 +116,13 @@ export default function MoviesCardList(props) {
   }
 
   const cardsSelect = (cards !== null ? cards : [])
-  const savedFilmsSelect = (savedFilms !== null ? savedFilms : [])
+  const savedFilmsSelect = (savedFilms !== null  ? savedFilms : [])
   const amountCard = cardVisible >= (currentPath === '/movies' ? cardsSelect : savedFilmsSelect).length
 
-  return (
+  return stateFilms && (
     <section className='movies'>
       <div className={ (props.main ? cardsSelect : savedFilmsSelect).length !== 0 ? 'movies__container' : 'movies__container movies__container-not-found'}>
-        {(cardsSelect) && (props.main ? cardsSelect : savedFilmsSelect).length !== 0 ? ((props.main ? cards : savedFilms).slice(0, cardVisible).map((el) => (
+        {(props.main ? cardsSelect : (props.stateSubmit ? savedFilmsSelect : CurrentUser.isSavedFilms)).length !== 0 ? ((props.main ? cards : savedFilms).slice(0, cardVisible).map((el) => (
           <MoviesCard handleDelete = {props.handleDelete} mainSaved={props.mainSaved} main={props.main} key={el._id || el.id} card={el} likeCard={props.likeCard}/>
         ))) : ( CurrentUser.isLoading ? <Preloader/> : (props.stateSubmit ? <p className='movies__not-found-card'>Похоже, ничего не найдено..</p> : ''))}
       </div>

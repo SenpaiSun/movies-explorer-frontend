@@ -1,5 +1,5 @@
 import './FilterCheckbox.css'
-import React, { useContext, useEffect} from 'react'
+import React, { useContext} from 'react'
 import { CurrentUserContext } from '../CurrentUserContext/CurrentUserContext'
 
 export default function FilterCheckbox(props) {

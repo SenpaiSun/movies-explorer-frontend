@@ -33,6 +33,8 @@ function App() {
     code: '',
   })
   const [inputValueFilms, setInputValueFilms] = useState('')
+  const [inputValueFilmsShorts, setInputValueFilmsShorts] = useState('')
+  const [stateSavedFilms, setStateSavedFilms] = useState(false)
 
   // Переключение чекбокса короткометражек
   const handleToggle = () => {
@@ -55,6 +57,7 @@ function App() {
           setCurrentUser({ name: res.name, email: res.email, id: res._id })
         }
       })
+      getSavedCard()
     }
   }
 
@@ -67,16 +70,11 @@ function App() {
       const filterCards = res.filter((card) => card.duration <= 40);
       setGetFilmsShorts(filterCards);
 
-      console.log('должен первым');
     } catch (error) {
       console.error('Ошибка при выполнении getFilmsApi:', error);
     }
     setIsLoading(false);
   }
-
-  useEffect(() => {
-    console.log(searchFilms)
-  }, [searchFilms])
 
   // Удаление токена пользователя
   const tokenRemove = () => {
@@ -94,17 +92,20 @@ function App() {
     }
   }, [isCheckedShorts, isCheckedShortsSaved])
 
+  useEffect(() => {
+    setStateSavedFilms(true)
+  }, [isSavedFilms, isSavedFilmsShorts])
 
   // Получение сохраненных фильмов
   const getSavedCard = () => {
     apiBeatfilm
       .getSavedCard()
       .then((data) => {
-        console.log(data)
         setIsSavedFilms(data)
         const filterCards = data.filter((card) => card.duration <= 40)
         setIsSavedFilmsShorts(filterCards)
-        console.log(isSavedFilms)
+        const filmsJSON = JSON.stringify(data);
+        localStorage.setItem('films-saved', filmsJSON);
       })
       .catch((err) => console.err)
   }
@@ -118,13 +119,15 @@ function App() {
   }, [])
 
   useEffect(() => {
-    setSearchFilms(
-      (!isCheckedShorts ? getFilms : getFilmsShorts).filter((card) => {
-        return card.nameRU.toLowerCase().includes(inputValueFilms.toLowerCase()) || card.nameEN.toLowerCase().includes(inputValueFilms.toLowerCase())
-      })
-    )
+      setSearchFilms(
+        (!isCheckedShorts ? getFilms : getFilmsShorts).filter((card) => {
+          if(inputValueFilms === undefined) {
+            return card
+          }
+          return card.nameRU.toLowerCase().includes(inputValueFilms.toLowerCase()) || card.nameEN.toLowerCase().includes(inputValueFilms.toLowerCase())
+        })
+      )
   }, [getFilms])
-
 
   // Поиск карточек по имени
   const getCardsByName = async (value) => {
@@ -135,42 +138,54 @@ function App() {
       await getFilmsApi()
       setSearchFilms(
         (!isCheckedShorts ? getFilms : getFilmsShorts).filter((card) => {
+          if(inputValueFilms === undefined) {
+            return card
+          }
           return card.nameRU.toLowerCase().includes(inputValueFilms.toLowerCase()) || card.nameEN.toLowerCase().includes(inputValueFilms.toLowerCase())
         })
       )
-      setIsLoading(false)
     }
     if(currentPath === '/saved-movies') {
       setSearchFilmsSaved(
         (!isCheckedShortsSaved ? isSavedFilms : isSavedFilmsShorts).filter((card) => {
+          if(inputValueFilms === undefined) {
+            return card
+          }
           return card.nameRU.toLowerCase().includes(value.toLowerCase()) || card.nameEN.toLowerCase().includes(value.toLowerCase())
         })
       )
-      setIsLoading(false)
     }
+    setIsLoading(false)
   }
 
-
   // Поиск карточек по состоянию чекбокса короткометражек
-  const getCardsByShorts = (value, state) => {
+  const getCardsByShorts = async (value, state) => {
+    setIsLoading(true)
     setInputValueFilms(value)
-    getFilmsApi()
-    console.log(value)
     setStateSubmit(true)
     if(currentPath === '/movies') {
+      await getFilmsApi()
       setSearchFilms(
         (state ? getFilms : getFilmsShorts).filter((card) => {
+          if(inputValueFilms === undefined) {
+            return card
+          }
           return card.nameRU.toLowerCase().includes(value.toLowerCase()) || card.nameEN.toLowerCase().includes(value.toLowerCase())
         })
       )
     }
     if(currentPath === '/saved-movies') {
+      setInputValueFilmsShorts(value)
       setSearchFilmsSaved(
         (state ? isSavedFilms : isSavedFilmsShorts).filter((card) => {
+          if(inputValueFilms === undefined) {
+            return card
+          }
           return card.nameRU.toLowerCase().includes(value.toLowerCase()) || card.nameEN.toLowerCase().includes(value.toLowerCase())
         })
       )
     }
+    setIsLoading(false)
   }
 
   // Авторизация
@@ -193,9 +208,6 @@ function App() {
           component: 'login',
           code: err.status
         })
-      })
-      .finally((res) => {
-        console.log(localStorage.getItem('token'))
       })
   }
 
@@ -235,9 +247,6 @@ function App() {
     apiBeatfilm
       .deleteCard(id)
       .then((res) => {
-        const updateArrayCard = searchFilmsSaved.filter((card) => card.movieId !== id)
-        console.log(updateArrayCard)
-        setSearchFilmsSaved(updateArrayCard)
         getSavedCard()
         return res
       })
@@ -262,7 +271,7 @@ function App() {
   }
 
   return (
-    <CurrentUserContext.Provider value={{ getFilms, getFilmsShorts, isLogged, currentUser, isCheckedShorts, isCheckedShortsSaved, isLoading, searchFilms, searchFilmsSaved, isSavedFilms, isStateValidate}}>
+    <CurrentUserContext.Provider value={{ getFilms, getFilmsShorts, isLogged, currentUser, isCheckedShorts, isCheckedShortsSaved, isLoading, searchFilms, searchFilmsSaved, isSavedFilms, isStateValidate, stateSavedFilms}}>
       <div className='root'>
         <Routes>
           <Route path='/' element={<Main main={true} landing={true} isLogged={isLogged} />} />
@@ -286,7 +295,7 @@ function App() {
                 }
               />
 
-              <Route path='/saved-movies' element={<ProtectedRoute component={SavedMovies} handleDelete={deleteCard} isLogged={isLogged} isSavedFilms={isSavedFilms} getCardsByName={getCardsByName} getCardsByShorts={getCardsByShorts} handleToggle={handleToggle} />} />
+              <Route path='/saved-movies' element={<ProtectedRoute component={SavedMovies} handleDelete={deleteCard} isLogged={isLogged} isSavedFilms={isSavedFilms} getCardsByName={getCardsByName} getCardsByShorts={getCardsByShorts} handleToggle={handleToggle} getSavedCard={getSavedCard} stateSubmit={stateSubmit}/>} />
 
               <Route path='/profile' element={<ProtectedRoute component={Profile} isLogged={isLogged} userData={currentUser} tokenRemove={tokenRemove} updateProfile={updateProfile}/>} />
             </>

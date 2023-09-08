@@ -8,6 +8,7 @@ export default function MoviesCard(props) {
   const CurrentUser = useContext(CurrentUserContext)
   const cardData = props.card
   const image = `https://api.nomoreparties.co/${cardData.image.url}`
+  const [isDeleted, setIsDeleted] = React.useState(false);
 
   const savedCard = {
     country: cardData.country || 'Неизвестно',
@@ -46,6 +47,9 @@ export default function MoviesCard(props) {
   }
 
   const clickDelete = () => {
+    if(currentPath === '/saved-movies') {
+      setIsDeleted(true);
+    }
     props.handleDelete(cardData.movieId)
   }
 
@@ -69,7 +73,7 @@ export default function MoviesCard(props) {
     clickLike()
   }
 
-  return (
+  return !isDeleted ? (
     <li className="card">
       <a href={cardData.trailerLink} target='_blank' rel='noreferrer' className="card__link">
         <img className="card__image" src={currentPath === '/movies' ? image : cardData.image} alt={cardData.nameRU}/>
@@ -80,5 +84,5 @@ export default function MoviesCard(props) {
       </div>
       <p className="card__duration">{formatDuration(cardData.duration)}</p>
     </li>
-  )
+  ) : null
 }

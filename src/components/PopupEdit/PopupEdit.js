@@ -34,7 +34,6 @@ export default function PopupEdit(props) {
   }
 
   useEffect(() => {
-    console.log(currentUser.isStateValidate.code)
     if (currentUser.isStateValidate.code === 200 && currentUser.isStateValidate.component === 'profile') {
       setIsStateInput(!isStateInput);
       setCorrectUpdate(true)
@@ -59,7 +58,6 @@ export default function PopupEdit(props) {
     } else {
       setIsButtonDisabled(false)
     }
-    console.log(isButtonDisabled)
   }, [isName, isEmail])
 
 

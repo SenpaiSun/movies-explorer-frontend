@@ -6,9 +6,9 @@ import { CurrentUserContext } from '../CurrentUserContext/CurrentUserContext'
 
 
 export default function SearchForm(props) {
+  const currentRoute = window.location.pathname
   const [windowSize, setWindowSize] = useState(window.innerWidth)
   const [inputValue, setInputValue] = useState(() => {
-    const currentRoute = window.location.pathname
     const savedInputValues = JSON.parse(localStorage.getItem('inputValues')) || {}
     return savedInputValues[currentRoute] || ''
   })
@@ -19,6 +19,13 @@ export default function SearchForm(props) {
 
 
   useEffect(() => {
+    if(currentRoute === '/saved-movies') {
+      setInputValue('')
+    }
+    if(currentRoute === '/movies') {
+      const savedInputValues = JSON.parse(localStorage.getItem('inputValues')) || {}
+      setInputValue(savedInputValues['/movies'])
+    }
     window.addEventListener('resize', handleResize)
     return () => {
       window.removeEventListener('resize', handleResize)
@@ -28,7 +35,6 @@ export default function SearchForm(props) {
 
 
   function handleSearchCard(event) {
-    const currentRoute = window.location.pathname
     const savedInputValues = JSON.parse(localStorage.getItem('inputValues')) || {}
     savedInputValues[currentRoute] = inputValue
     localStorage.setItem('inputValues', JSON.stringify(savedInputValues))
@@ -47,12 +53,13 @@ export default function SearchForm(props) {
     setInputValue(event.target.value)
   }
 
+
   return (
     <section className='search-form'>
       <form className='search-form__container' onSubmit={handleSearchCard} noValidate>
         <div className='search-form__settings-input'>
           {windowSize > 690 && <img className='search-form__logo' src={searchLogo} alt='Иконка лупы'></img>}
-          <input className='search-form__input' placeholder='Фильм' type='search' required value={inputValue} onChange={handleInputChange} />
+          <input className='search-form__input' placeholder='Фильм' type='search' required value={inputValue === undefined ? '' : inputValue} onChange={handleInputChange} />
           <button className='search-form__button-search' type='submit'>
             Найти
           </button>
