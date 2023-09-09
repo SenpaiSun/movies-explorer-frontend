@@ -5,7 +5,7 @@ import './Navigation.css'
 
 export default function Navigation(props) {
   return (
-    <nav className='navigation'>
+    <nav className={!props.landing ? 'navigation' : 'navigation navigation-active'}>
       <div className='header__container-route'>
         <Link className={props.mainMovies ? 'header__link-header header__link-header-active' : 'header__link-header'} to='/movies'>
           Фильмы

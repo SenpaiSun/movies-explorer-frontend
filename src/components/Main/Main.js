@@ -10,7 +10,7 @@ export default function Main(props) {
   document.body.style.overflow = 'auto';
   return (
     <>
-      <Header landing={props.landing}/>
+      <Header main={true} landing={props.landing} isLogged={props.isLogged}/>
       <main className='main'>
         <Promo/>
         <AboutProject/>

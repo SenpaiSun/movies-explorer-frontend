@@ -124,6 +124,11 @@ opacity: 1;
   cursor: pointer;
 }
 
+.main-register__button-register-disabled {
+  background-color: #F8F8F8;
+  color: #C2C2C2;
+}
+
 @media screen and (max-width: 440px) {
   .main-register__button-register {
     font-size: 12px;

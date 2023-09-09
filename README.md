@@ -24,3 +24,5 @@
 
 ### Макет:
 В качестве макета был выбран "dark-1"
+PullRequest: https://github.com/SenpaiSun/movies-explorer-frontend/pull/2
+Ссылка на проект: https://drow-films.nomoreparties.co/
